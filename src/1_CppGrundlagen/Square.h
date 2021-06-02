@@ -1,5 +1,5 @@
 #pragma once
-class Example1
+class Square
 {
 public:
     static void ReadSquare();
