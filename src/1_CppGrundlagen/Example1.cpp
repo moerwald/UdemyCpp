@@ -1,11 +1,16 @@
 #include "Example1.h"
 #include <iostream>
+using std::cout;
+using std::cin;
+using std::endl;
 
 void Example1::ReadSquare()
 {
-    int side{};
-    std::cout << "Enter side:";
-    std::cin >> side;
+    double side{};
+    cout << "Enter side:";
+    cin >> side;
 
-    std::cout << "Square area:" << side * side;
+    auto result = side * side;
+    cout << "Square area:" << result << endl;
+    cout << "Square perimeter:" << 4*side << endl;
 }
