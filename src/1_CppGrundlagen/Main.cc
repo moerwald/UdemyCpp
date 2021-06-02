@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Example1.h"
 
 int AddVars()
 {
@@ -53,6 +54,9 @@ int main(void)
 	std::cout << "Hello World!" << std::endl;
     AddVars();
     DataTypes();
+
+    Example1::ReadSquare();
+
 
 	return 0;
 }

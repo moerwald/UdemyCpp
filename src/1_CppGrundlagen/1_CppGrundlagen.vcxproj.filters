@@ -18,5 +18,13 @@
     <ClCompile Include="Main.cc">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Example1.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Example1.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
