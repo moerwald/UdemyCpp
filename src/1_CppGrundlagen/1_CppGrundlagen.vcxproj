@@ -161,12 +161,14 @@
   <ItemGroup>
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="DataTypes.cpp" />
+    <ClCompile Include="SizeOf.cpp" />
     <ClCompile Include="Square.cpp" />
     <ClCompile Include="Main.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Circle.h" />
     <ClInclude Include="DataTypes.h" />
+    <ClInclude Include="SizeOf.h" />
     <ClInclude Include="Square.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

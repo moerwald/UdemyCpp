@@ -2,6 +2,7 @@
 #include "Square.h"
 #include "DataTypes.h"
 #include "Circle.h"
+#include "SizeOf.h"
 
 int AddVars()
 {
@@ -17,11 +18,11 @@ int AddVars()
 
 int main(void)
 {
-	std::cout << "Hello World!" << std::endl;
-    AddVars();
+    SizeOf::Print();
     DataTypes::Print();
     Square::ReadSquare();
     Circle::PrintCircle();
+
 
 	return 0;
 }
