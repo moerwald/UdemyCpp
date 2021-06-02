@@ -18,12 +18,24 @@
     <ClCompile Include="Main.cc">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Example1.cpp">
+    <ClCompile Include="Square.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="DataTypes.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Circle.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Example1.h">
+    <ClInclude Include="Square.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="DataTypes.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Circle.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
