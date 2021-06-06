@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="DataTypes.cpp" />
+    <ClCompile Include="Prime.cpp" />
     <ClCompile Include="SizeOf.cpp" />
     <ClCompile Include="Square.cpp" />
     <ClCompile Include="Main.cc" />
@@ -168,6 +169,7 @@
   <ItemGroup>
     <ClInclude Include="Circle.h" />
     <ClInclude Include="DataTypes.h" />
+    <ClInclude Include="Prime.h" />
     <ClInclude Include="SizeOf.h" />
     <ClInclude Include="Square.h" />
   </ItemGroup>

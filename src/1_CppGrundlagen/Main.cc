@@ -3,6 +3,7 @@
 #include "DataTypes.h"
 #include "Circle.h"
 #include "SizeOf.h"
+#include "Prime.h"
 
 int AddVars()
 {
@@ -23,6 +24,10 @@ int main(void)
     Square::ReadSquare();
     Circle::PrintCircle();
 
+    std::cout << "Enter prime: " << std::endl;
+    int number{};
+    std::cin >> number;
+    std::cout << "Is prime: " << Prime::IsPrime(number);
 
 	return 0;
 }
