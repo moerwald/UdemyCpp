@@ -9,6 +9,7 @@ using std::endl;
 
 void printGame(int playerIndex, int nrOfElements)
 {
+    const auto lastElement = nrOfElements - 1;
 //    static const auto nrOfElements = 10;
     for (size_t i = 0; i < nrOfElements; i++)
     {
@@ -16,7 +17,7 @@ void printGame(int playerIndex, int nrOfElements)
         {
             cout << (playerIndex == 0 ? "P" : "|");
         }
-        else if (i == nrOfElements - 1)
+        else if (i == lastElement)
         {
             cout << (playerIndex == i ? "P" : "|");
             cout << endl;
