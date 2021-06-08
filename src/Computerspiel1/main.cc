@@ -7,58 +7,75 @@ using std::cout;
 using std::cin;
 using std::endl;
 
+void printGame(int playerIndex)
+{
+    static const auto nrOfElements = 10;
+    for (size_t i = 0; i < nrOfElements; i++)
+    {
+        switch (i)
+        {
+            // first element
+        case 0:
+            cout << (playerIndex == 0 ? "P" : "|");
+            break;
+
+            // last element
+        case nrOfElements - 1:
+            if (playerIndex == i)
+                cout << "P";
+            else
+                cout << "|";
+
+            cout << endl;
+            break;
+
+            // other elements
+        default:
+            cout << (i == playerIndex ? "P" : ".");
+            break;
+        }
+    }
+}
+
+int movePlayer(int playerIndex)
+{
+    std::string userInput{};
+    cout << "Move (f)orward or (b)ackward?";
+    cin >> userInput;
+
+    if (userInput == "f")
+        playerIndex++;
+    else if (userInput == "b" && playerIndex > 0)
+        playerIndex--;
+
+    return playerIndex;
+}
+
+bool shouldEndgame(int playerIndex, int lastGameFieldElement)
+{
+    if (playerIndex != lastGameFieldElement)
+        return false;
+
+    cout << "Your reached the end";
+    return true;
+}
+
 int main()
 {
     auto quit = false;
-    std::string userInput{};
-    const auto nrOfElements = 10;
-    auto playerIndex = 0; 
+    auto playerIndex = 0;
+    static const auto nrOfElements = 10;
 
     while (!quit)
     {
-        for (size_t i = 0; i < nrOfElements; i++)
-        {
-            switch (i)
-            {
-                // first element
-            case 0:
-                cout << (playerIndex == 0 ? "P" : "|");
-                break;
 
-                // last element
-            case nrOfElements - 1:
-                if (playerIndex == i)
-                    cout << "P";
-                else
-                    cout << "|";
+        printGame(playerIndex);
 
-                cout << endl;
-                break;
-
-                // other elements
-            default:
-                cout << (i == playerIndex ? "P" : ".");
-                break;
-            }
-        }
-
-        cout << "Move (f)orward or (b)ackward?";
-        cin >> userInput;
-
-        if (userInput == "f")
-            playerIndex++;
-        else if (userInput == "b" && playerIndex > 0)
-            playerIndex--;
+        playerIndex = movePlayer(playerIndex);
 
         system("cls");
 
-        // End game
-        if (playerIndex == nrOfElements - 1)
-        {
-            quit = true;
-            cout << "Your reached the end";
-        }
+        quit = shouldEndgame(playerIndex, nrOfElements - 1);
     }
-
     return 0;
 }
