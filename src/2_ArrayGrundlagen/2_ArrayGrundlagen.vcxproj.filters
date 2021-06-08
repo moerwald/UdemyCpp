@@ -24,12 +24,18 @@
     <ClCompile Include="Pointer1.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="CallByValue.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pointer4.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Pointer1.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="CallByValue.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
