@@ -11,16 +11,18 @@ void printGame(int playerIndex, int nrOfElements)
 {
     const auto lastElement = nrOfElements - 1;
     static const auto PlayerSymbol = "P";
+    static const auto Boundary = "|";
+
 
     for (size_t i = 0; i < nrOfElements; i++)
     {
         if (i == 0)
         {
-            cout << (playerIndex == 0 ? PlayerSymbol : "|");
+            cout << (playerIndex == 0 ? PlayerSymbol : Boundary);
         }
         else if (i == lastElement)
         {
-            cout << (playerIndex == i ? PlayerSymbol : "|");
+            cout << (playerIndex == i ? PlayerSymbol : Boundary);
             cout << endl;
         }
         else
