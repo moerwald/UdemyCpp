@@ -20,5 +20,8 @@ int Pointer1::main()
     delete p_zahl;
     p_zahl = nullptr;
 
+    // Heap memory address which is stored in p_zahl
+    cout << p_zahl << endl;
+
     return 0;
 }
