@@ -17,22 +17,17 @@ void printGame(int playerIndex, int nrOfElements)
         return getPlayer ? PlayerSymbol : otherSym;
     };
 
-
     for (size_t i = 0; i < nrOfElements; i++)
     {
         if (i == 0)
-        {
-            cout << getSymbol(playerIndex == 0);
-        }
+            cout << getSymbol(0 == playerIndex);
         else if (i == lastElement)
         {
-            cout << getSymbol(playerIndex == i);
+            cout << getSymbol(i == playerIndex);
             cout << endl;
         }
         else
-        {
-            cout << getSymbol(playerIndex == i , ".");
-        }
+            cout << getSymbol(i == playerIndex, ".");
     }
 }
 
