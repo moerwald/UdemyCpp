@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>;
 #include "main.h"
+#include <conio.h>
 
 using std::cout;
 using std::cin;
@@ -49,12 +50,13 @@ int main()
         else if (userInput == "b" && playerIndex > 0)
             playerIndex--;
 
+        system("cls");
+
         // End game
         if (playerIndex == nrOfElements - 1)
         {
             quit = true;
             cout << "Your reached the end";
-
         }
     }
 
