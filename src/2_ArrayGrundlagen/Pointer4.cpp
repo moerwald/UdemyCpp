@@ -11,7 +11,7 @@ void print_double_pointer(double* p)
     std::cout << "Deref: " << *p << " Pointer Address: " << &p << std::endl;
 }
 
-int Pointer4::Main()
+int Pointer4::main()
 {
     int a = 1237;
     double b = -13.73;
