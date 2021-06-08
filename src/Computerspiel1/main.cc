@@ -30,6 +30,8 @@ int main()
                     cout << "P";
                 else
                     cout << "|";
+
+                cout << endl;
                 break;
 
                 // other elements
