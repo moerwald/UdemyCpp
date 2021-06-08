@@ -8,12 +8,17 @@ int Pointer1::main()
 {
     int* p_zahl = new int{ 4 };
 
+    // Heap memory address which is stored in p_zahl
     cout << p_zahl << endl;
+
+    // Value of the heap memory the pointer points to
     cout << *p_zahl << endl;
+
+    // Address of the pointer variable (on the stack)
     cout << &p_zahl << endl;
 
     delete p_zahl;
-
+    p_zahl = nullptr;
 
     return 0;
 }
