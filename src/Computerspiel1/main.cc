@@ -10,21 +10,22 @@ using std::endl;
 void printGame(int playerIndex, int nrOfElements)
 {
     const auto lastElement = nrOfElements - 1;
-//    static const auto nrOfElements = 10;
+    static const auto PlayerSymbol = "P";
+
     for (size_t i = 0; i < nrOfElements; i++)
     {
         if (i == 0)
         {
-            cout << (playerIndex == 0 ? "P" : "|");
+            cout << (playerIndex == 0 ? PlayerSymbol : "|");
         }
         else if (i == lastElement)
         {
-            cout << (playerIndex == i ? "P" : "|");
+            cout << (playerIndex == i ? PlayerSymbol : "|");
             cout << endl;
         }
         else
         {
-            cout << (playerIndex == i ? "P" : ".");
+            cout << (playerIndex == i ? PlayerSymbol : ".");
         }
     }
 }
