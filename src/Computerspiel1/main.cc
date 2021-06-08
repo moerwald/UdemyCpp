@@ -60,6 +60,11 @@ bool shouldEndgame(int playerIndex, int lastGameFieldElement)
     return true;
 }
 
+void clearScreen()
+{
+    system("cls");
+}
+
 int main()
 {
     auto quit = false;
@@ -73,7 +78,7 @@ int main()
 
         playerIndex = movePlayer(playerIndex);
 
-        system("cls");
+        clearScreen();
 
         quit = shouldEndgame(playerIndex, nrOfElements - 1);
     }
