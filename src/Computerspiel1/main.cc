@@ -7,32 +7,23 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-void printGame(int playerIndex)
+void printGame(int playerIndex, int nrOfElements)
 {
-    static const auto nrOfElements = 10;
+//    static const auto nrOfElements = 10;
     for (size_t i = 0; i < nrOfElements; i++)
     {
-        switch (i)
+        if (i == 0)
         {
-            // first element
-        case 0:
             cout << (playerIndex == 0 ? "P" : "|");
-            break;
-
-            // last element
-        case nrOfElements - 1:
-            if (playerIndex == i)
-                cout << "P";
-            else
-                cout << "|";
-
+        }
+        else if (i == nrOfElements - 1)
+        {
+            cout << (playerIndex == i ? "P" : "|");
             cout << endl;
-            break;
-
-            // other elements
-        default:
-            cout << (i == playerIndex ? "P" : ".");
-            break;
+        }
+        else
+        {
+            cout << (playerIndex == i ? "P" : ".");
         }
     }
 }
@@ -70,17 +61,17 @@ int main()
     auto quit = false;
     auto playerIndex = 0;
     static const auto nrOfElements = 10;
+    const auto lastGameField = nrOfElements - 1;
 
     while (!quit)
     {
-
-        printGame(playerIndex);
+        printGame(playerIndex, nrOfElements);
 
         playerIndex = movePlayer(playerIndex);
 
         clearScreen();
 
-        quit = shouldEndgame(playerIndex, nrOfElements - 1);
+        quit = shouldEndgame(playerIndex, lastGameField);
     }
     return 0;
 }
