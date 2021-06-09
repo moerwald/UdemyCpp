@@ -4,10 +4,10 @@
 using std::cout;
 using std::endl;
 
-int getArrayMax(int inputArray[])
+int getArrayMax(int inputArray[], int arrayLength)
 {
-    auto currentMax = 0;
-    for (size_t i = 0; i < sizeof(inputArray)/sizeof(int); i++)
+    auto currentMax = inputArray[0];
+    for (size_t i = 0; i < arrayLength ; i++)
     {
         cout << inputArray[i] << endl;
         if (inputArray[i] > currentMax)
@@ -37,7 +37,7 @@ int PointerArray::main()
         cout << &p[i] << endl;
     }
 
-    auto max = getArrayMax(p);
+    auto max = getArrayMax(p, array_size);
     cout << "max: " << max << endl;
 
     // headp deallocation
