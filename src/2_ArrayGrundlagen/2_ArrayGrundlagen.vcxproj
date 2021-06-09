@@ -25,6 +25,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Pointer1.cpp" />
     <ClCompile Include="Pointer4.cpp" />
+    <ClCompile Include="PointerArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CallByReference.h" />
@@ -32,6 +33,7 @@
     <ClInclude Include="CallByValue.h" />
     <ClInclude Include="Pointer1.h" />
     <ClInclude Include="Pointer4.h" />
+    <ClInclude Include="PointerArray.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
