@@ -6,7 +6,7 @@ using std::endl;
 
 void f(int* p_number)
 {
-    cout << "f: p_number " << *p_number << endl;
+    cout << "f: p_number " << p_number << endl;
     cout << "f: &p_number " << &p_number << endl;
 }
 
