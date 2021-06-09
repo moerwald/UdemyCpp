@@ -4,10 +4,10 @@
 using std::cout;
 using std::endl;
 
-int getArrayMax(int inputArray[], unsigned int arrayLength)
+int getArrayMax(int* inputArray, unsigned int arrayLength)
 {
     auto currentMax = inputArray[0];
-    for (size_t i = 0; i < arrayLength ; i++)
+    for (size_t i = 0; i < arrayLength; i++)
     {
         cout << inputArray[i] << endl;
         if (inputArray[i] > currentMax)
@@ -42,6 +42,11 @@ int PointerArray::main()
 
     // headp deallocation
     delete[] p;
+
+    int a[5] = { 1,2,3,4,5 };
+
+    max = getArrayMax(a, sizeof(a)/sizeof(int));
+    cout << "max: " << max << endl;
 
     return 0;
 }
