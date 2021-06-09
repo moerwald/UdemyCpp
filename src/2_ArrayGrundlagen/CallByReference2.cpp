@@ -17,6 +17,11 @@ void f2(int &number)
     number++;
 }
 
+int f3(int number)
+{
+    return (++number);
+}
+
 int CallByReference2::main()
 {
     int num{ 5 };
@@ -24,6 +29,8 @@ int CallByReference2::main()
     f1(num);
     cout << "num " << num << endl;
     f2(num);
+    cout << "num " << num << endl;
+    num = f3(num);
     cout << "num " << num << endl;
     return 0;
 }
