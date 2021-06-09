@@ -4,7 +4,7 @@
 using std::cout;
 using std::endl;
 
-int getArrayMax(int inputArray[], int arrayLength)
+int getArrayMax(int inputArray[], unsigned int arrayLength)
 {
     auto currentMax = inputArray[0];
     for (size_t i = 0; i < arrayLength ; i++)
