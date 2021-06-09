@@ -12,7 +12,7 @@ int getArrayMax(int inputArray[])
         cout << inputArray[i] << endl;
         if (inputArray[i] > currentMax)
         {
-            currentMax = inputArray[i]
+            currentMax = inputArray[i];
         }
     }
 
