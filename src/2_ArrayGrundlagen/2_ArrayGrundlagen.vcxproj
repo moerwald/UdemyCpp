@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CallByReference.cpp" />
+    <ClCompile Include="CallByReference2.cpp" />
     <ClCompile Include="CallByValue.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Pointer1.cpp" />
@@ -27,6 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CallByReference.h" />
+    <ClInclude Include="CallByReference2.h" />
     <ClInclude Include="CallByValue.h" />
     <ClInclude Include="Pointer1.h" />
     <ClInclude Include="Pointer4.h" />
