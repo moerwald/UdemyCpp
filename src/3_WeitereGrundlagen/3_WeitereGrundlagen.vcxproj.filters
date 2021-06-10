@@ -18,12 +18,18 @@
     <ClInclude Include="Struct1.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Struct1.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Enum.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
