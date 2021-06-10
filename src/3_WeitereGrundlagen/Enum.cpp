@@ -14,7 +14,6 @@ struct User
 {
     int id;
     PermissionLevel permission;
-
 };
 
 int Enum::Main()
@@ -35,6 +34,7 @@ int Enum::Main()
     case PermissionLevel::TUTOR:
         std::cout << "User is tutor" << std::endl;
         break;
+
     default:
         break;
     }
