@@ -41,6 +41,8 @@ int movePlayer(int playerIndex)
         playerIndex++;
     else if (userInput == "b" && playerIndex > 0)
         playerIndex--;
+    else
+        cout << "Unrecognized move!";
 
     return playerIndex;
 }
