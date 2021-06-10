@@ -3,7 +3,7 @@
 #include "Enum.h"
 
 
-enum PermissionLevel
+enum PermissionLevel // Values are stored as ints
 {
     STUDENT = 1,
     TUTOR = 2,
