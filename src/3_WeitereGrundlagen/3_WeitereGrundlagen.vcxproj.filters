@@ -21,6 +21,9 @@
     <ClInclude Include="Enum.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Struct2.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Struct1.cpp">
@@ -30,6 +33,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Enum.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Struct2.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
