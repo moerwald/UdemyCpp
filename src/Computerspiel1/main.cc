@@ -7,28 +7,24 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-void printGame(int playerIndex, int nrOfElements)
+const auto NROFELEMENTS = 10;
+const auto LASTGAMEFIELD = NROFELEMENTS - 1;
+
+void printGame(int playerIndex)
 {
-    const auto lastElement = nrOfElements - 1;
-    static const auto PlayerSymbol = "P";
+    char gameState[NROFELEMENTS];
 
-    auto getSymbol = [](bool getPlayer, std::string otherSym = "|")
-    { 
-        return getPlayer ? PlayerSymbol : otherSym;
-    };
+    for (size_t i = 0; i < NROFELEMENTS; i++)
+        gameState[i] = '.';
 
-    for (size_t i = 0; i < nrOfElements; i++)
-    {
-        if (i == 0)
-            cout << getSymbol(0 == playerIndex);
-        else if (i == lastElement)
-        {
-            cout << getSymbol(i == playerIndex);
-            cout << endl;
-        }
-        else
-            cout << getSymbol(i == playerIndex, ".");
-    }
+    gameState[0] = '|';
+    gameState[NROFELEMENTS -1] = '|';
+    gameState[playerIndex] = 'P';
+
+    for (size_t i = 0; i < NROFELEMENTS; i++)
+        cout << gameState[i];
+
+    cout << endl;
 }
 
 int movePlayer(int playerIndex)
@@ -47,9 +43,9 @@ int movePlayer(int playerIndex)
     return playerIndex;
 }
 
-bool shouldEndgame(int playerIndex, int lastGameFieldElement)
+bool shouldEndgame(int playerIndex)
 {
-    if (playerIndex != lastGameFieldElement)
+    if (playerIndex != LASTGAMEFIELD)
         return false;
 
     cout << "Your reached the end";
@@ -65,18 +61,15 @@ int main()
 {
     auto quit = false;
     auto playerIndex = 0;
-    static const auto nrOfElements = 10;
-    const auto lastGameField = nrOfElements - 1;
+    const auto lastGameField = NROFELEMENTS - 1;
 
     while (!quit)
     {
-        printGame(playerIndex, nrOfElements);
-
+        printGame(playerIndex);
         playerIndex = movePlayer(playerIndex);
-
         clearScreen();
 
-        quit = shouldEndgame(playerIndex, lastGameField);
+        quit = shouldEndgame(playerIndex);
     }
     return 0;
 }
