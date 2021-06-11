@@ -19,11 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Defines.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="Struct1.h" />
     <ClInclude Include="Struct2.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Defines.cpp" />
     <ClCompile Include="Enum.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Struct1.cpp" />
