@@ -27,6 +27,9 @@
     <ClInclude Include="Defines.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Const.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Struct1.cpp">
@@ -42,6 +45,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Defines.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Const.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
