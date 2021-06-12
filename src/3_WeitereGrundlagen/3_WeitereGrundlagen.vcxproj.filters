@@ -30,7 +30,7 @@
     <ClInclude Include="Const.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Stuct3.h">
+    <ClInclude Include="Struct3.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -53,7 +53,7 @@
     <ClCompile Include="Const.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Stuct3.cpp">
+    <ClCompile Include="Struct3.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

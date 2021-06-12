@@ -1,5 +1,5 @@
 #pragma once
-class Stuct3
+class Struct3
 {
 public: static int Main();
 };
