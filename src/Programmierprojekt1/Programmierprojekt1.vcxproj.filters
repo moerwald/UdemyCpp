@@ -15,18 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cc">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Exercise2.cpp">
+    <ClCompile Include="DynArray.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Exercise2.h">
+    <ClInclude Include="DynArray.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
