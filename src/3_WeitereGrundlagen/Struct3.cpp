@@ -39,18 +39,34 @@ namespace NS_Struct3
         }
     } TS_Vehicle;
 
+    void Print(const TS_Vehicle* const v) {
+
+        std::cout << "ID: " << v->id << std::endl;
+        std::cout << "LANE: " << static_cast<int>(v->lane) << std::endl;
+        std::cout << "VELOCITY: " << v->velocity << std::endl;
+    }
+
     void Print(TS_Vehicle v) {
-        std::cout << "ID: " << v.id << std::endl;
-        std::cout << "LANE: " << static_cast<int>(v.lane) << std::endl;
-        std::cout << "VELOCITY: " << v.velocity << std::endl;
+        Print(static_cast<TS_Vehicle*>(&v));
     }
 }
+
+constexpr int NrOfVehicles = 3;
 
 int Struct3::Main()
 {
     NS_Struct3::TS_Vehicle v1{ 1, NS_Struct3::Lanes::CENTER, 48.5f };
     NS_Struct3::TS_Vehicle v2{ 2, NS_Struct3::Lanes::RIGHT, 100.0f };
     NS_Struct3::TS_Vehicle v3{ 3, NS_Struct3::Lanes::LEFT, 42.0f };
+
+    NS_Struct3::TS_Vehicle arr[NrOfVehicles]{ v1, v2, v3 };
+
+    for (size_t i = 0; i < NrOfVehicles; i++)
+    {
+        arr[i].Print();
+        Print(arr[i]);
+        Print(&arr[i]);
+    }
 
     return 0;
 }
