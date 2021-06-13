@@ -1,6 +1,7 @@
 #include "DynArray.h"
+#include<cstddef>
 
-DynamicArray Create (const double& value, const std::size_t& length)
+DynamicArray CreateDynamicArray (const double& value, const std::size_t& length)
 {
     DynamicArray arr = {nullptr, 0};
 
@@ -9,13 +10,12 @@ DynamicArray Create (const double& value, const std::size_t& length)
     for (size_t i = 0; i < length; i++)
     {
         arr.m_data[i] = value;
-        /* code */
     }
 
     return arr;
 }
 
-void DynArray::PushBack(DynamicArray& dynamic_array, const int &value)
+void PushBack(DynamicArray& dynamic_array, const int &value)
 {
     double *temp = nullptr;
     temp = new double[dynamic_array.m_length + 1];
@@ -32,7 +32,7 @@ void DynArray::PushBack(DynamicArray& dynamic_array, const int &value)
     dynamic_array.m_length++;
 }
 
-void DynArray::PopBack(DynamicArray& dynamic_array)
+void PopBack(DynamicArray& dynamic_array)
 {
     double *temp = nullptr;
     temp = new double[dynamic_array.m_length - 1];
