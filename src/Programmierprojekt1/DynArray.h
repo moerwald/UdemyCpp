@@ -13,6 +13,8 @@ struct DynamicArray
     std::size_t m_length;
 };
 
+DynamicArray Create (const double& value, const std::size_t& length);
+
 class DynArray
 {
 public:
