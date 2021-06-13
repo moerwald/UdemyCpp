@@ -1,7 +1,23 @@
 #pragma once
-class DynArray
+
+#include <cstddef>
+
+/**
+ * @brief DynamicArray Structure
+ *
+ * @param double* m_data
+ */
+struct DynamicArray
 {
-public: void PushBack(int*& inputArray, const unsigned int& size, const int& value);
-public: void PopBack(int*& inputArray, const unsigned int& size);
+    double *m_data;
+    std::size_t m_length;
 };
 
+class DynArray
+{
+public:
+    void PushBack(DynamicArray& dynamic_array, const int &value);
+
+public:
+    void PopBack(DynamicArray& dynamic_array);
+};

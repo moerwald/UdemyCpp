@@ -1,32 +1,32 @@
 #include "DynArray.h"
 
-void DynArray::PushBack(int *&inputArray, const unsigned int &size, const int &value)
+void DynArray::PushBack(DynamicArray& dynamic_array, const int &value)
 {
-    int *temp = nullptr;
-    temp = new int[size + 1];
+    double *temp = nullptr;
+    temp = new double[dynamic_array.m_length + 1];
 
-    for (size_t i = 0; i < size; i++)
+    for (size_t i = 0; i < dynamic_array.m_length; i++)
     {
-        temp[i] = inputArray[i];
+        temp[i] = dynamic_array.m_data[i];
     }
 
-    temp[size] = value;
+    temp[dynamic_array.m_length] = value;
 
-    delete[] inputArray;
-    inputArray = temp;
+    delete[] dynamic_array.m_data;
+    dynamic_array.m_data = temp;
 }
 
-void DynArray::PopBack(int *&inputArray, const unsigned int &size)
+void DynArray::PopBack(DynamicArray& dynamic_array)
 {
-    int *temp = nullptr;
-    temp = new int[size - 1];
+    double *temp = nullptr;
+    temp = new double[dynamic_array.m_length - 1];
 
-    for (size_t i = 0; i < size; i++)
+    for (size_t i = 0; i < dynamic_array.m_length; i++)
     {
         /* code */
-        temp[i] = inputArray[i];
+        temp[i] = dynamic_array.m_data[i];
     }
 
-    delete[] inputArray;
-    inputArray = temp;
+    delete[] dynamic_array.m_data;
+    dynamic_array.m_data = temp;
 }
