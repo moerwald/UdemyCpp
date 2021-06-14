@@ -1,5 +1,6 @@
 #include "AlgoArray.h"
 #include <cstddef>
+#include <math.h>
 
 double Sum(DynamicArray& array)
 {
@@ -29,4 +30,23 @@ double Median(DynamicArray& array)
 
     std::size_t index = array.m_length / 2;
     return array.m_data[index];
+}
+
+double Variance(DynamicArray& array)
+{
+    auto mean = Mean(array);
+    auto variance = 0.0;
+    auto probability = 1.0 / array.m_length;
+
+    for (size_t i = 0; i < array.m_length; i++)
+    {
+        variance += pow(array.m_data[i] - mean, 2.0) * probability;
+    }
+
+    return variance;
+}
+
+double StdDev(DynamicArray& array)
+{
+    return sqrt(Variance(array));
 }
