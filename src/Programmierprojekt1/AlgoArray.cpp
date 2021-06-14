@@ -13,7 +13,7 @@ double Mean(DynamicArray& array)
 
 double Median(DynamicArray& array)
 {
-    auto isOdd = array.m_length % 2 == 0;
+    auto isOdd = array.m_length % 2 != 0;
     if (isOdd)
     {
         std::size_t index = array.m_length / 2;

@@ -1,16 +1,21 @@
 #include "DynArray.h"
+#include "AlgoArray.h"
 #include <iostream>
 #include <cstddef>
 
+constexpr std::size_t SIZE = 5;
+
 int main()
 {
-    DynamicArray arr = CreateDynamicArray(42.0, 10);
+    DynamicArray arr = CreateDynamicArray(42.0, SIZE);
 
-    for (std::size_t i = 0; i < 10; i++)
+    for (std::size_t i = 0; i < SIZE; i++)
     {
-        std::cout << arr.m_data[i] << std::endl;
-        /* code */
+        arr.m_data[i] = i;
     }
+
+    std::cout << "Mean: " << Mean(arr) << std::endl;
+    std::cout << "Median: " << Median(arr) << std::endl;
 
 
     return 0;
