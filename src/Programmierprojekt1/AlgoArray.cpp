@@ -1,14 +1,20 @@
 #include "AlgoArray.h"
 #include <cstddef>
 
-double Mean(DynamicArray& array)
+double Sum(DynamicArray& array)
 {
-    double mean{};
+    auto sum = 0;
     for (size_t i = 0; i < array.m_length; i++)
     {
-        mean += array.m_data[i];
+        sum += array.m_data[i];
     }
-    return mean / array.m_length;
+
+    return sum;
+}
+
+double Mean(DynamicArray& array)
+{
+    return Sum(array) / array.m_length;
 }
 
 double Median(DynamicArray& array)
