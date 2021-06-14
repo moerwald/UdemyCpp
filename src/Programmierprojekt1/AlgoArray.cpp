@@ -19,14 +19,14 @@ double Mean(DynamicArray& array)
 
 double Median(DynamicArray& array)
 {
-    auto isOdd = array.m_length % 2 != 0;
-    if (isOdd)
+    auto isEven = array.m_length % 2 == 0;
+    if (isEven)
     {
-        std::size_t index = array.m_length / 2;
-        return array.m_data[index];
+        std::size_t index1 = array.m_length / 2;
+        std::size_t index2 = index1 - 1;
+        return (array.m_data[index1] + array.m_data[index2]) / 2;
     }
 
-    std::size_t index1 = array.m_length / 2;
-    std::size_t index2 = index1 - 1;
-    return (array.m_data[index1] + array.m_data[index2]) / 2;
+    std::size_t index = array.m_length / 2;
+    return array.m_data[index];
 }
