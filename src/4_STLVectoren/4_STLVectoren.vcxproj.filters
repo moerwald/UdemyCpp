@@ -18,12 +18,18 @@
     <ClInclude Include="MathFunctions.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="MultiDimensionalVector.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MathFunctions.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiDimensionalVector.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
