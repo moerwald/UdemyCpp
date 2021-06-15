@@ -46,5 +46,11 @@ int MathFunctions::Main()
     FillDoubleVector(vec);
     PrintDoubleVector(vec);
 
+    DoubleVectorExp(vec);
+    PrintDoubleVector(vec);
+
+    DoubleVectorLog(vec);
+    PrintDoubleVector(vec);
+
     return 0;
 }
