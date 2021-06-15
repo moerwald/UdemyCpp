@@ -5,7 +5,9 @@
 int MultiDimensionalVector::Main()
 {
     // 4x4 array
-    std::vector<std::vector<int>> vec(4, std::vector<int>(4, 0));
+    std::vector<std::vector<int>> vec(4, // NUM OF vectors
+                                      std::vector<int>(4, // NUM OF ints
+                                                       0)); // Value to fill slots
 
     // rows
     for (size_t i = 0; i < vec.size(); i++)
