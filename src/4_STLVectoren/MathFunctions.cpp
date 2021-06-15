@@ -1,13 +1,13 @@
 #include "MathFunctions.h"
 #include <iostream>
+#include <math.h>
 
 void MathFunctions::FillDoubleVector(std::vector<double>& vec)
 {
     auto size = vec.size();
-    vec.clear();
     for (size_t i = 0; i < size; i++)
     {
-        vec.push_back(i);
+        vec[i] = i;
     }
 }
 
@@ -22,10 +22,20 @@ void MathFunctions::PrintDoubleVector(std::vector<double>& vec)
 
 void MathFunctions::DoubleVectorExp(std::vector<double>& vec)
 {
+    auto size = vec.size();
+    for (size_t i = 0; i < size; i++)
+    {
+        vec[i] = (std::exp(i));
+    }
 }
 
 void MathFunctions::DoubleVectorLog(std::vector<double>& vec)
 {
+    auto size = vec.size();
+    for (size_t i = 0; i < size; i++)
+    {
+        vec[i] = (std::log(i));
+    }
 }
 
 int MathFunctions::Main()
