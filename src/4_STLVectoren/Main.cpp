@@ -1,7 +1,7 @@
 
 #include "MathFunctions.h"
 
-int Main()
+int main()
 {
     return MathFunctions::Main();
 }
