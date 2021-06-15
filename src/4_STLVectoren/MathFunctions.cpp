@@ -40,15 +40,14 @@ void MathFunctions::DoubleVectorLog(std::vector<double>& vec)
 
 int MathFunctions::Main()
 {
-    std::vector<double> vec = std::vector<double>();
-    vec.push_back(1.0);
-    vec.push_back(2.0);
+    std::vector<double> vec(4, 0);
+
     FillDoubleVector(vec);
     PrintDoubleVector(vec);
 
     DoubleVectorExp(vec);
     PrintDoubleVector(vec);
-
+    
     DoubleVectorLog(vec);
     PrintDoubleVector(vec);
 
