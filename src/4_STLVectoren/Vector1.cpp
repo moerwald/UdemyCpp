@@ -36,6 +36,7 @@ int Vector1::Main()
         std::cout << "iv " << i << std::endl;
     }
 
+    // Lets remove all entries from first iterator two second iterator
     iv.erase(deleteFrom, iv.end());
     for (auto i : iv)
     {
