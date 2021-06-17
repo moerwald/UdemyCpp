@@ -19,6 +19,7 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="MultiDimensionalVector.h">
+    <ClInclude Include="Vector1.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -30,6 +31,7 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="MultiDimensionalVector.cpp">
+    <ClCompile Include="Vector1.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

@@ -21,11 +21,13 @@
   <ItemGroup>
     <ClInclude Include="MathFunctions.h" />
     <ClInclude Include="MultiDimensionalVector.h" />
+    <ClInclude Include="Vector1.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MathFunctions.cpp" />
     <ClCompile Include="MultiDimensionalVector.cpp" />
+    <ClCompile Include="Vector1.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
