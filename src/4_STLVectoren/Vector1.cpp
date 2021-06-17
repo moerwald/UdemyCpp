@@ -17,14 +17,28 @@ int Vector1::Main()
     std::iota(iv.begin(), iv.end(), 42);
 
     intVector iv2 = iv;
-
     std::vector<int>& iv3 = iv;
     std::vector<int>* iv4 = &iv;
 
     std::cout << "&iv " << &iv << std::endl;
-    std::cout << "&iv3 " << &iv3 << std::endl;
-    std::cout << "&iv4 " << &iv4 << std::endl;
+    std::cout << "intVector &iv2 " << &iv2 << std::endl;
+    std::cout << "intVector& &iv3 " << &iv3 << std::endl;
+    std::cout << "intVector* &iv4 " << &iv4 << std::endl;
     std::cout << "iv4 " << iv4 << std::endl;
+    std::cout << "(*iv4)[0] " << (*iv4)[0] << std::endl;
+    std::cout << "*(iv.begin()) " << *(iv.begin()) << std::endl;
+
+    auto deleteFrom = std::remove(iv.begin(), iv.end(), 43);
+    for (auto i : iv)
+    {
+        std::cout << "iv " << i << std::endl;
+    }
+
+    iv.erase(deleteFrom, iv.end());
+    for (auto i : iv)
+    {
+        std::cout << "iv " << i << std::endl;
+    }
 
     return 0;
 }
