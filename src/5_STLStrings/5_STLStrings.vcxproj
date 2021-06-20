@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FileOperation.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Readfile.cpp" />
     <ClCompile Include="String1.cpp" />
@@ -150,6 +151,7 @@
     <ClCompile Include="WriteFile.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FileOperation.h" />
     <ClInclude Include="Readfile.h" />
     <ClInclude Include="String1.h" />
     <ClInclude Include="String2.h" />
