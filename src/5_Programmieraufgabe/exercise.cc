@@ -1,5 +1,6 @@
 
 #include "exercise.h"
+#include <algorithm>
 
 std::vector<double> maw_row_values(Matrix& matrix)
 {
@@ -22,5 +23,6 @@ std::vector<double> maw_row_values(Matrix& matrix)
 
 double sort_and_max(std::vector<double>& vec)
 {
-    return 0.0;
+    std::sort(vec.begin(), vec.end());
+    vec.back();
 }
