@@ -4,20 +4,24 @@
 int main()
 {
     Matrix matrix{
-        {1,2,3},
-        {4,5,6},
-        {7,8,9}
+        {3,1,2},
+        {6,0,4},
+        {9,7,2}
     };
 
     for (size_t i = 0; i < matrix.size(); i++)
     {
-        for (size_t j = 0; i < matrix[i].size(); i++)
+        for (size_t j = 0; j < matrix[i].size(); j++)
         {
             std::cout << "[" << i << "][" << j << "]: " << matrix[i][j] << std::endl;
         }
     }
+    auto max_row_vec = maw_row_values(matrix);
+    for (auto val : max_row_vec)
+        std::cout << "Max in row: " << val << std::endl;
 
-    auto max_row_vals = maw_row_values(matrix);
+
+
 
 
 
