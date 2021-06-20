@@ -144,9 +144,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Readfile.cpp" />
     <ClCompile Include="String1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Readfile.h" />
     <ClInclude Include="String1.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
