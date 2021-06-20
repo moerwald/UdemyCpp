@@ -24,12 +24,18 @@
     <ClCompile Include="Readfile.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="WriteFile.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="String1.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Readfile.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="WriteFile.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
