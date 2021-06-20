@@ -14,9 +14,10 @@ int Readfile::main()
         while (std::getline(stream, str))
         {
             std::cout << str << std::endl;
-            file_content += str;
+            file_content += str + "\n";
         }
 
+        std::cout << std::endl << "===============================" << std::endl;
         std::cout << "Full content: " << std::endl << file_content;
     }
 
