@@ -7,7 +7,7 @@ std::vector<double> maw_row_values(Matrix& matrix)
 
     for (size_t i = 0; i < matrix.size(); i++)
     {
-        std::vector<double> row = matrix[i];
+        const auto &row = matrix[i];
         auto max = 0.0;
 
         for (auto val : row)
