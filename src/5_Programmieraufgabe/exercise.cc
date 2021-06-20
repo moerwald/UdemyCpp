@@ -24,5 +24,5 @@ std::vector<double> maw_row_values(Matrix& matrix)
 double sort_and_max(std::vector<double>& vec)
 {
     std::sort(vec.begin(), vec.end());
-    vec.back();
+    return vec.back();
 }
