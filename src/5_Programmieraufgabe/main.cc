@@ -14,6 +14,8 @@ int main()
             std::cout << "[" << i << "][" << j << "]: " << matrix[i][j] << std::endl;
 
     auto max_row_vec = maw_row_values(matrix);
+    std::cout << "max_row_vec address: " << &max_row_vec << std::endl;
+
     for (auto val : max_row_vec)
         std::cout << "Max in row: " << val << std::endl;
 

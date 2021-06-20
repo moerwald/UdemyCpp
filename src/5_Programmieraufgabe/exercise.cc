@@ -1,6 +1,7 @@
 
 #include "exercise.h"
 #include <algorithm>
+#include <iostream>
 
 std::vector<double> maw_row_values(Matrix& matrix)
 {
@@ -17,6 +18,8 @@ std::vector<double> maw_row_values(Matrix& matrix)
 
         max_vec.push_back(max);
     }
+
+    std::cout << "max_vec address: " << &max_vec << std::endl;
 
     return max_vec;
 }
