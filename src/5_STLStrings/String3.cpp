@@ -15,8 +15,16 @@ int String3::main()
 
     // Append
     str2 = str;
-    str2.append(" yo");
+    str2.append(", yo");
     std::cout << "str2: " << str2 << std::endl;
+
+    // Replace
+    const std::string to_replace = "string";
+    const std::string replace_with = "STRING";
+    auto idx = str2.find(to_replace);
+    str2.replace(idx, to_replace.size(), replace_with);
+    std::cout << "str2 (replace 'string' with 'STRING'): " << str2 << std::endl;
+
 
     return 0;
 }
