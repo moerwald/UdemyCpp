@@ -25,6 +25,12 @@ int String3::main()
     str2.replace(idx, to_replace.size(), replace_with);
     std::cout << "str2 (replace 'string' with 'STRING'): " << str2 << std::endl;
 
+    const std::string str3 = "hello";
+    const std::string str4 = "hello";
+    auto same = str3.compare(str4); // Compare character by character
+    std::cout << "compare : " << same << std::endl;
+    same = str3.compare("henllo"); // Compare character by character -1 -> n comes before l in alphabet
+    std::cout << "compare : " << same << std::endl;
 
     return 0;
 }
