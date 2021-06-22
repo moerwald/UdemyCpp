@@ -6,6 +6,7 @@
 #include "Defines.h"
 #include "Const.h"
 #include "RAndLValueSamples.h"
+#include "MoveSemantics.h"
 
 int main( )
 {
@@ -15,6 +16,7 @@ int main( )
     //return Struct3::Main();
     //return Defines::Main();
     //return Const::Main();
-    return RAndLValueSamples::main();
+    //return RAndLValueSamples::main();
+    return MoveSemantics::main();
 
 }
