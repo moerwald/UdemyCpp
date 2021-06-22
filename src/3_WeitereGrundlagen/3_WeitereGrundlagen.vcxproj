@@ -22,6 +22,7 @@
     <ClInclude Include="Const.h" />
     <ClInclude Include="Defines.h" />
     <ClInclude Include="Enum.h" />
+    <ClInclude Include="RAndLValueSamples.h" />
     <ClInclude Include="Struct1.h" />
     <ClInclude Include="Struct2.h" />
     <ClInclude Include="Struct3.h" />
@@ -31,6 +32,7 @@
     <ClCompile Include="Defines.cpp" />
     <ClCompile Include="Enum.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="RAndLValueSamples.cpp" />
     <ClCompile Include="Struct1.cpp" />
     <ClCompile Include="Struct2.cpp" />
     <ClCompile Include="Struct3.cpp" />
