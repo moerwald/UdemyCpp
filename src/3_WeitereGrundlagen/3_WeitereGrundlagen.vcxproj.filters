@@ -36,6 +36,9 @@
     <ClInclude Include="RAndLValueSamples.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="MoveSemantics.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Struct1.cpp">
@@ -60,6 +63,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="RAndLValueSamples.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveSemantics.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
