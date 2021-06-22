@@ -10,27 +10,29 @@ public:
         std::cout << "Created" << std::endl;
         m_Size = strlen(string);
         m_Data = new char[m_Size];
+        memcpy(m_Data, string, m_Size);
     }
 
     String(const String& other)
     {
-        std::cout << "Created" << std::endl;
+        std::cout << "Copied" << std::endl;
         m_Size = other.m_Size;
-        m_Data = other.m_Data;
+        m_Data = new char[m_Size];
+        memcpy(m_Data, other.m_Data, m_Size);
     }
 
     ~String()
     {
-        delete[]m_Data;
+        delete[] m_Data;
     }
 
     void Print()
     {
         for (size_t i = 0; i < m_Size; i++)
         {
-            std::cout << m_Data[i];
+            printf("%c", m_Data[i]);
         }
-        std::cout << std::endl;
+        printf("\n");
     }
 
 private:
