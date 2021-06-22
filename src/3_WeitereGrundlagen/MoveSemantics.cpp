@@ -18,10 +18,21 @@ public:
     String(const String& other)
     {
         m_Id = GetRandom();
-        std::cout << m_Id <<  " Copied" << std::endl;
+        std::cout << m_Id <<  " Copied from id " << other.m_Id << std::endl;
         m_Size = other.m_Size;
         m_Data = new char[m_Size];
         memcpy(m_Data, other.m_Data, m_Size);
+    }
+
+    String(String&& other) noexcept
+    {
+        m_Id = GetRandom();
+        std::cout << m_Id <<  " Moving from id " << other.m_Id << std::endl;
+        m_Size = other.m_Size;
+        m_Data = other.m_Data;
+
+        other.m_Data = nullptr;
+        other.m_Size = 0;
     }
 
     ~String()
@@ -29,7 +40,6 @@ public:
         std::cout << m_Id << " Destroyed" << std::endl;
         delete[] m_Data;
     }
-
 
     void Print()
     {
@@ -60,7 +70,11 @@ public:
     Entity(const String& name)
         :m_Name(name)
     {
+    }
 
+    Entity(String&& name)
+        :m_Name(std::move(name))
+    {
     }
 
     void PrintName()
