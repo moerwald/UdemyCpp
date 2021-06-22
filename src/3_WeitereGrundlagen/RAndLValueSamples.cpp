@@ -2,11 +2,6 @@
 #include<string>
 #include<iostream>
 
-void print_l_value_reference(std::string& str)
-{
-    std::cout << "print_l_value_reference: " << str << std::endl;
-}
-
 void print_const_l_value_reference(const std::string& str)
 {
     std::cout << "print_const_l_value_reference: " << str << std::endl;
@@ -22,10 +17,8 @@ int RAndLValueSamples::main()
     std::string str = "test";
     std::string& str_l_value_ref = str;
     std::string* str_l_value_ptr = &str;
-
-    print_l_value_reference(str);
-
     const std::string str_const = "test";
+
     print_const_l_value_reference(str_const);
     print_const_l_value_reference(str);
     print_const_l_value_reference(str_l_value_ref);
