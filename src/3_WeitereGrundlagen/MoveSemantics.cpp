@@ -1,5 +1,6 @@
 #include "MoveSemantics.h"
 #include <iostream>
+#include <random>
 
 class String
 {
@@ -7,7 +8,8 @@ public:
     String() = default;
     String(const char* string)
     {
-        std::cout << "Created" << std::endl;
+        m_Id = GetRandom();
+        std::cout << m_Id << " Created" << std::endl;
         m_Size = strlen(string);
         m_Data = new char[m_Size];
         memcpy(m_Data, string, m_Size);
@@ -15,7 +17,8 @@ public:
 
     String(const String& other)
     {
-        std::cout << "Copied" << std::endl;
+        m_Id = GetRandom();
+        std::cout << m_Id <<  " Copied" << std::endl;
         m_Size = other.m_Size;
         m_Data = new char[m_Size];
         memcpy(m_Data, other.m_Data, m_Size);
@@ -23,8 +26,10 @@ public:
 
     ~String()
     {
+        std::cout << m_Id << " Destroyed" << std::endl;
         delete[] m_Data;
     }
+
 
     void Print()
     {
@@ -38,6 +43,15 @@ public:
 private:
     char* m_Data;
     uint32_t m_Size;
+    double m_Id;
+
+    double GetRandom()
+    {
+        std::random_device rd;
+        std::mt19937 mt(rd());
+        std::uniform_real_distribution<double> dist(1.0, 100.0);
+        return dist(mt);
+    }
 };
 
 class Entity
