@@ -39,6 +39,9 @@
     <ClCompile Include="SmallStringOptimization.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="StringStream1.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="String1.h">
@@ -60,6 +63,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="SmallStringOptimization.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="StringStream1.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
