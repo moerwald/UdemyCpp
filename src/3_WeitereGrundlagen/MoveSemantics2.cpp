@@ -14,6 +14,8 @@ int MoveSemantics2::main()
     // auto dest_moved_from_string_via_move_ctor((String&&)string);     // Cast is also support, but std::move is more flexible
     dest_moved_from_string = std::move(string);                         // Object already created compiler will call move-assignment-operator!
 
+    std::cout << "========================================" << std::endl;
+    std::cout << "Use move assignment operator" << std::endl;
     OwnString apple = "Apple";
     OwnString dest;
     OwnString& dest1 = apple;
