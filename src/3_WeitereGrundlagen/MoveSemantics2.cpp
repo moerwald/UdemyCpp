@@ -84,28 +84,6 @@ private:
     }
 };
 
-class Entity
-{
-public:
-    Entity(const String& name)
-        :m_Name(name)
-    {
-    }
-
-    Entity(String&& name)
-        :m_Name(std::move(name))
-    {
-    }
-
-    void PrintName()
-    {
-        m_Name.Print();
-    }
-
-private:
-    String m_Name;
-};
-
 
 int MoveSemantics2::main()
 {
