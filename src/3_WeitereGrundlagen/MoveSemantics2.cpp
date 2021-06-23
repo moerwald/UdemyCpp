@@ -1,93 +1,11 @@
 #include "MoveSemantics2.h"
+#include "OwnString.h"
 #include <iostream>
 #include <random>
 
-class MyString
-{
-public:
-    MyString()
-    {
-        m_Id = GetRandom();
-        std::cout << m_Id << " Created via default CTOR" << std::endl;
-    }
-
-    MyString(const char* string)
-    {
-        m_Id = GetRandom();
-        std::cout << m_Id << " Created" << std::endl;
-        m_Size = strlen(string);
-        m_Data = new char[m_Size];
-        memcpy(m_Data, string, m_Size);
-    }
-
-    MyString(const MyString& other)
-    {
-        m_Id = GetRandom();
-        std::cout << m_Id << " Copied from id " << other.m_Id << std::endl;
-        m_Size = other.m_Size;
-        m_Data = new char[m_Size];
-        memcpy(m_Data, other.m_Data, m_Size);
-    }
-
-    MyString(MyString&& other) noexcept
-    {
-        m_Id = GetRandom();
-        std::cout << m_Id << " Moving from id " << other.m_Id << std::endl;
-        m_Size = other.m_Size;
-        m_Data = other.m_Data;
-
-        other.m_Data = nullptr;
-        other.m_Size = 0;
-    }
-
-    MyString& operator=(MyString&& other) noexcept
-    {
-        std::cout << m_Id << " Moving via =-operator from id " << other.m_Id << std::endl;
-        if (this != &other)
-        {
-            delete[] m_Data;
-            m_Size = other.m_Size;
-            m_Data = other.m_Data;
-
-            other.m_Data = nullptr;
-            other.m_Size = 0;
-        }
-        return *this;
-    }
-
-    ~MyString()
-    {
-        std::cout << m_Id << " Destroyed" << std::endl;
-        delete[] m_Data;
-    }
-
-    void Print()
-    {
-        for (size_t i = 0; i < m_Size; i++)
-        {
-            printf("%c", m_Data[i]);
-        }
-        printf("\n");
-    }
-
-private:
-    char* m_Data;
-    uint32_t m_Size;
-    double m_Id;
-
-    double GetRandom()
-    {
-        std::random_device rd;
-        std::mt19937 mt(rd());
-        std::uniform_real_distribution<double> dist(1.0, 100.0);
-        return dist(mt);
-    }
-};
-
-
 int MoveSemantics2::main()
 {
-    MyString string = "Hello";
+    OwnString string = "Hello";
     auto dest_copy_of_string = string;                                  // Creates a copy!!!
     auto dest_moved_from_string = std::move(string);                    // Lets convert string to a temporary, calls the move-CTOR!!! Therefore
                                                                         // dest_moved_from_string is a NEW object, which will take ownership
@@ -96,9 +14,9 @@ int MoveSemantics2::main()
     // auto dest_moved_from_string_via_move_ctor((String&&)string);     // Cast is also support, but std::move is more flexible
     dest_moved_from_string = std::move(string);                         // Object already created compiler will call move-assignment-operator!
 
-    MyString apple = "Apple";
-    MyString dest;
-    MyString& dest1 = apple;
+    OwnString apple = "Apple";
+    OwnString dest;
+    OwnString& dest1 = apple;
 
     std::cout << "apple: ";
     apple.Print();

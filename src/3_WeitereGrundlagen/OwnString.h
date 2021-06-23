@@ -1,4 +1,5 @@
 #pragma once
+#include <cstddef>
 class OwnString
 {
 
@@ -19,7 +20,7 @@ public:
 
 private:
     char* m_Data;
-    uint32_t m_Size;
+    std::size_t m_Size;
     double m_Id;
 
     double GetRandom();
