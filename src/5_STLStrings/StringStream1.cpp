@@ -15,6 +15,7 @@ int StringStream1::main()
     unsigned int day, month, year;
     char delimiter;
 
+    // stringstream helps us to break a string in separate variables
     birthday_ss >> day >> delimiter >> month >> delimiter >> year;
 
     std::cout << "Your birthday is: " << birthday << std::endl;
