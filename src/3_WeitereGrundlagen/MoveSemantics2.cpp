@@ -5,7 +5,12 @@
 class String
 {
 public:
-    String() = default;
+    String()
+    {
+        m_Id = GetRandom();
+        std::cout << m_Id << " Created via default CTOR" << std::endl;
+    }
+
     String(const char* string)
     {
         m_Id = GetRandom();
@@ -18,7 +23,7 @@ public:
     String(const String& other)
     {
         m_Id = GetRandom();
-        std::cout << m_Id <<  " Copied from id " << other.m_Id << std::endl;
+        std::cout << m_Id << " Copied from id " << other.m_Id << std::endl;
         m_Size = other.m_Size;
         m_Data = new char[m_Size];
         memcpy(m_Data, other.m_Data, m_Size);
@@ -27,12 +32,27 @@ public:
     String(String&& other) noexcept
     {
         m_Id = GetRandom();
-        std::cout << m_Id <<  " Moving from id " << other.m_Id << std::endl;
+        std::cout << m_Id << " Moving from id " << other.m_Id << std::endl;
         m_Size = other.m_Size;
         m_Data = other.m_Data;
 
         other.m_Data = nullptr;
         other.m_Size = 0;
+    }
+
+    String& operator=(String&& other) noexcept
+    {
+        std::cout << m_Id << " Moving via =-operator from id " << other.m_Id << std::endl;
+        if (this != &other)
+        {
+            delete[] m_Data;
+            m_Size = other.m_Size;
+            m_Data = other.m_Data;
+
+            other.m_Data = nullptr;
+            other.m_Size = 0;
+        }
+        return *this;
     }
 
     ~String()
@@ -89,7 +109,33 @@ private:
 
 int MoveSemantics2::main()
 {
-    Entity entity(String("Andy"));
-    entity.PrintName();
+    String string = "Hello";
+    auto dest_copy_of_string = string;                                  // Creates a copy!!!
+    auto dest_moved_from_string = std::move(string);                    // Lets convert string to a temporary, calls the move-CTOR!!! Therefore
+                                                                        // dest_moved_from_string is a NEW object, which will take ownership
+                                                                        // of string-object memory!!!
+    // auto dest_moved_from_string_via_move_ctor(std::move(string));    // Equivalent as code above, BUT harder to read
+    // auto dest_moved_from_string_via_move_ctor((String&&)string);     // Cast is also support, but std::move is more flexible
+    dest_moved_from_string = std::move(string);                         // Object already created compiler will call move-assignment-operator!
+
+    String apple = "Apple";
+    String dest;
+    String& dest1 = apple;
+
+    std::cout << "apple: ";
+    apple.Print();
+    std::cout << "dest: ";
+    dest.Print();
+
+    std::cout << "After calling the move assignment operator values should be switched" << std::endl;
+    dest = std::move(apple);
+
+    std::cout << "apple: ";
+    apple.Print();
+    std::cout << "dest: ";
+    dest.Print();
+
+    dest1.Print();
+
     return 0;
 }
