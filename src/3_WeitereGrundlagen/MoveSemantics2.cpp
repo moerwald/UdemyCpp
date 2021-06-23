@@ -2,16 +2,16 @@
 #include <iostream>
 #include <random>
 
-class String
+class MyString
 {
 public:
-    String()
+    MyString()
     {
         m_Id = GetRandom();
         std::cout << m_Id << " Created via default CTOR" << std::endl;
     }
 
-    String(const char* string)
+    MyString(const char* string)
     {
         m_Id = GetRandom();
         std::cout << m_Id << " Created" << std::endl;
@@ -20,7 +20,7 @@ public:
         memcpy(m_Data, string, m_Size);
     }
 
-    String(const String& other)
+    MyString(const MyString& other)
     {
         m_Id = GetRandom();
         std::cout << m_Id << " Copied from id " << other.m_Id << std::endl;
@@ -29,7 +29,7 @@ public:
         memcpy(m_Data, other.m_Data, m_Size);
     }
 
-    String(String&& other) noexcept
+    MyString(MyString&& other) noexcept
     {
         m_Id = GetRandom();
         std::cout << m_Id << " Moving from id " << other.m_Id << std::endl;
@@ -40,7 +40,7 @@ public:
         other.m_Size = 0;
     }
 
-    String& operator=(String&& other) noexcept
+    MyString& operator=(MyString&& other) noexcept
     {
         std::cout << m_Id << " Moving via =-operator from id " << other.m_Id << std::endl;
         if (this != &other)
@@ -55,7 +55,7 @@ public:
         return *this;
     }
 
-    ~String()
+    ~MyString()
     {
         std::cout << m_Id << " Destroyed" << std::endl;
         delete[] m_Data;
@@ -87,7 +87,7 @@ private:
 
 int MoveSemantics2::main()
 {
-    String string = "Hello";
+    MyString string = "Hello";
     auto dest_copy_of_string = string;                                  // Creates a copy!!!
     auto dest_moved_from_string = std::move(string);                    // Lets convert string to a temporary, calls the move-CTOR!!! Therefore
                                                                         // dest_moved_from_string is a NEW object, which will take ownership
@@ -96,9 +96,9 @@ int MoveSemantics2::main()
     // auto dest_moved_from_string_via_move_ctor((String&&)string);     // Cast is also support, but std::move is more flexible
     dest_moved_from_string = std::move(string);                         // Object already created compiler will call move-assignment-operator!
 
-    String apple = "Apple";
-    String dest;
-    String& dest1 = apple;
+    MyString apple = "Apple";
+    MyString dest;
+    MyString& dest1 = apple;
 
     std::cout << "apple: ";
     apple.Print();
