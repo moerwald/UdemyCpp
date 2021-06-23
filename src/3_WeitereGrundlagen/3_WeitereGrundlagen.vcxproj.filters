@@ -42,6 +42,9 @@
     <ClInclude Include="MoveSemantics2.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="OwnString.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Struct1.cpp">
@@ -72,6 +75,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="MoveSemantics2.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="OwnString.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

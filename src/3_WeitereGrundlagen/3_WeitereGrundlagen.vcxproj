@@ -24,6 +24,7 @@
     <ClInclude Include="Enum.h" />
     <ClInclude Include="MoveSemantics.h" />
     <ClInclude Include="MoveSemantics2.h" />
+    <ClInclude Include="OwnString.h" />
     <ClInclude Include="RAndLValueSamples.h" />
     <ClInclude Include="Struct1.h" />
     <ClInclude Include="Struct2.h" />
@@ -36,6 +37,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MoveSemantics.cpp" />
     <ClCompile Include="MoveSemantics2.cpp" />
+    <ClCompile Include="OwnString.cpp" />
     <ClCompile Include="RAndLValueSamples.cpp" />
     <ClCompile Include="Struct1.cpp" />
     <ClCompile Include="Struct2.cpp" />
