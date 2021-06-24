@@ -1,6 +1,7 @@
 
+#include "StdArray.h"
 
 int main()
 {
-    return 0;
+    return StdArray::main();
 }
