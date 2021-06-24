@@ -16,6 +16,12 @@ int StdArray::main()
         std::cout << it << std::endl;
     }
 
+    std::cout << "Value can be changed via []-operator" << std::endl;
+    my_array[1] = 42;
+    std::cout << "my_array[1]: " << my_array[1] << std::endl;
+
+    std::cout << "Array size:" << my_array.size() << std::endl;
+
     
 
     return 0;
