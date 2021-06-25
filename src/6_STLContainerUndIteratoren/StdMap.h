@@ -2,6 +2,6 @@
 class StdMap
 {
 public:
-    int main();
+    static int main();
 };
 
