@@ -24,12 +24,18 @@
     <ClCompile Include="StdList.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="StdMap.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdArray.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="StdList.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="StdMap.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
