@@ -19,11 +19,26 @@ void print(const std::vector<int>::const_iterator it)
     std::cout << "Value: " << *it << " Address: " << &*it << std::endl;
 }
 
+void print(const std::vector<int>::const_reverse_iterator it)
+{
+    std::cout << "Value: " << *it << " Address: " << &*it << std::endl;
+}
+
 void print(std::vector<int>::const_iterator first, const std::vector<int>::const_iterator& last)
 {
     for (; first != last; ++first)
     {
         print(first);
+    }
+}
+
+void print_reverse(const std::vector<int>& vec)
+{
+    auto rbegin = vec.crbegin();
+    auto rend = vec.crend();
+    for (; rbegin != rend; ++rbegin)
+    {
+        print(rbegin);
     }
 }
 
@@ -47,6 +62,8 @@ int StdIterators::main()
     auto next = std::next(it);
     print(prev);
     print(next);
+
+    print_reverse(my_vec);
 
 
     return 0;
