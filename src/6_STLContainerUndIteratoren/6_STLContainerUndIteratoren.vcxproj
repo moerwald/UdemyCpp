@@ -147,11 +147,13 @@
     <ClCompile Include="StdArray.cpp" />
     <ClCompile Include="StdIterators.cpp" />
     <ClCompile Include="StdList.cpp" />
+    <ClCompile Include="StdMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdArray.h" />
     <ClInclude Include="StdIterators.h" />
     <ClInclude Include="StdList.h" />
+    <ClInclude Include="StdMap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
