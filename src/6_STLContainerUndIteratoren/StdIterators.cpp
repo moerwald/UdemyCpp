@@ -14,13 +14,19 @@ void print(const std::vector<int>& vec)
     std::cout << std::endl;
 }
 
-void print( std::vector<int>::const_iterator first, const std::vector<int>::const_iterator& last)
+void print(const std::vector<int>::const_iterator it)
 {
-    for(; first!= last; ++first)
+    std::cout << "Value: " << *it << " Address: " << &*it << std::endl;
+}
+
+void print(std::vector<int>::const_iterator first, const std::vector<int>::const_iterator& last)
+{
+    for (; first != last; ++first)
     {
-        std::cout << "Value: " << *first << " Address: " << &*first << std::endl;
+        print(first);
     }
 }
+
 
 int StdIterators::main()
 {
@@ -33,6 +39,14 @@ int StdIterators::main()
     auto it = my_vec.begin();
     std::advance(it, 2);
     print(it, my_vec.end());
+
+    auto distance = std::distance(it, my_vec.end());
+    std::cout << "Distance: " << distance << std::endl;
+
+    auto prev = std::prev(it);
+    auto next = std::next(it);
+    print(prev);
+    print(next);
 
 
     return 0;
