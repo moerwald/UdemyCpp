@@ -8,6 +8,6 @@ int main()
 {
     //return StdArray::main();
     //return StdList::main();
-    //return StdIterators::main();
-    return StdMap::main();
+    // return StdMap::main();
+    return StdIterators::main();
 }
