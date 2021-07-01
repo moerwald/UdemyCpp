@@ -52,24 +52,23 @@ bool is_in_string(const string& str, const string& sub_string)
     {
         auto it_sub_string = sub_string.cbegin();
 
-        auto it_str_vale = *it_str;
-        auto it_sub_string_vale = *it_sub_string;
-
-        while (it_str_vale == it_sub_string_vale)
+        while ((*it_str) == (*it_sub_string))
         {
             ++it_str;
             ++it_sub_string;
 
             if (it_sub_string == sub_string.cend())
             {
+                // search succeeded
                 return true;
             }
 
-            it_str_vale = *it_str;
-            it_sub_string_vale = *it_sub_string;
-
-            if (it_str_vale != it_sub_string_vale)
-                --it_str;
+            if ((*it_str) != (*it_sub_string))
+            {
+                //No match reset orig string iterator
+                --it_str;  
+                break;
+            }
         }
 
         ++it_str;

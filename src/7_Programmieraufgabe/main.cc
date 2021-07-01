@@ -26,10 +26,11 @@ int main()
 
 
     cout << "Should be true: " << is_in_string("Hello World", "World") << endl;
-    cout << "Should be false: " << is_in_string("Hello World", "world") << endl;
-
     cout << "Should be true: " << is_in_string("Hello World", "lo Wo") << endl;
+
+    cout << "Should be false: " << is_in_string("Hello World", "world") << endl;
     cout << "Should be false: " << is_in_string("Hello World", "lo Woxx") << endl;
+    cout << "Should be false: " << is_in_string("Hello World", "lo_Wo") << endl;
 
 	return 0;
 }
