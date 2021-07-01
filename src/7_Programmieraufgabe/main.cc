@@ -24,5 +24,12 @@ int main()
     cout << "is_palendrom(otto): " << is_palindrom("otto") << endl;
     cout << "is_palendrom(smith): " << is_palindrom("smith") << endl;
 
+
+    cout << "Should be true: " << is_in_string("Hello World", "World") << endl;
+    cout << "Should be false: " << is_in_string("Hello World", "world") << endl;
+
+    cout << "Should be true: " << is_in_string("Hello World", "lo Wo") << endl;
+    cout << "Should be false: " << is_in_string("Hello World", "lo Woxx") << endl;
+
 	return 0;
 }

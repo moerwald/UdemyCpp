@@ -45,5 +45,35 @@ bool is_palindrom(const string& str)
 
 bool is_in_string(const string& str, const string& sub_string)
 {
+    auto it_str = str.begin();
+    const auto& it_str_end = str.cend();
+
+    while (it_str != it_str_end)
+    {
+        auto it_sub_string = sub_string.begin();
+
+        auto it_str_vale = *it_str;
+        auto it_sub_string_vale = *it_sub_string;
+
+        while (it_str_vale == it_sub_string_vale)
+        {
+            ++it_str;
+            ++it_sub_string;
+
+            if (it_sub_string == sub_string.end())
+            {
+                return true;
+            }
+
+            it_str_vale = *it_str;
+            it_sub_string_vale = *it_sub_string;
+
+            if (it_str_vale != it_sub_string_vale)
+                --it_str;
+        }
+
+        ++it_str;
+    }
+
     return false;
 }
