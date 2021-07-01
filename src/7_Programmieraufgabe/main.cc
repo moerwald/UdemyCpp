@@ -20,5 +20,9 @@ int main()
     auto heaviest = get_heaviest_friend(friends);
     cout << "Heaviest friend: " << heaviest << endl;
 
+
+    cout << "is_palendrom(otto): " << is_palindrom("otto") << endl;
+    cout << "is_palendrom(smith): " << is_palindrom("smith") << endl;
+
 	return 0;
 }
