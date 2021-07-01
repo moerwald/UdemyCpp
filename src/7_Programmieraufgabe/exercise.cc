@@ -45,33 +45,16 @@ bool is_palindrom(const string& str)
 
 bool is_in_string(const string& str, const string& sub_string)
 {
-    auto it_str = str.cbegin();
-    const auto& it_str_end = str.cend();
+    if (str.length() < sub_string.length())
+        return false;
 
-    while (it_str != it_str_end)
+    auto end = str.end() - sub_string.length() + 1;
+    for (auto it = str.cbegin(); it != end; ++it)
     {
-        auto it_sub_string = sub_string.cbegin();
+        auto &&str_to_check = std::string(it, it + sub_string.length());
 
-        while ((*it_str) == (*it_sub_string))
-        {
-            ++it_str;
-            ++it_sub_string;
-
-            if (it_sub_string == sub_string.cend())
-            {
-                // search succeeded
-                return true;
-            }
-
-            if ((*it_str) != (*it_sub_string))
-            {
-                //No match reset orig string iterator
-                --it_str;  
-                break;
-            }
-        }
-
-        ++it_str;
+        if (sub_string == str_to_check)
+            return true;
     }
 
     return false;
