@@ -15,3 +15,4 @@ string get_heaviest_friend(const Friends& friends);
 
 
 bool is_palindrom(const string& str);
+bool is_in_string(const string& str, const string& sub_string);

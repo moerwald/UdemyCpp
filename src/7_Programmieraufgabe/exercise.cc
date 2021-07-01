@@ -42,3 +42,8 @@ bool is_palindrom(const string& str)
 
     return str_reversed == str;
 }
+
+bool is_in_string(const string& str, const string& sub_string)
+{
+    return false;
+}
