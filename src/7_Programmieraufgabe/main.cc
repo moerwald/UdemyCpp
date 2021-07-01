@@ -12,7 +12,7 @@ int main()
     Friends friends;
 
     friends["Jan"] = std::pair<int, int> (36, 82);
-    friends["Ina"] = std::pair<int, int> (26, 52);
+    friends["Ina"] = std::pair<int, int> (46, 52);
 
     auto oldest = get_oldest_friend(friends);
     cout << "Oldest friend: " << oldest << endl;
