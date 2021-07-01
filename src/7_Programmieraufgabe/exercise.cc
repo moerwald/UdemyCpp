@@ -38,19 +38,7 @@ string get_heaviest_friend(const Friends& friends)
 
 bool is_palindrom(const string& str)
 {
-    auto it_begin = str.begin();
-    auto it_end = str.end();
+    const std::string str_reversed(str.crbegin(), str.crend());
 
-    for (; it_begin != str.end(); ++it_begin)
-    {
-        if (it_end != str.begin())
-            --it_end;
-
-        auto begin_val = *it_begin;
-        auto end_val = *it_end;
-        if (begin_val != end_val)
-            return false;
-    }
-
-    return true;
+    return str_reversed == str;
 }
