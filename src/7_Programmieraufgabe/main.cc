@@ -1,6 +1,9 @@
 
 #include "exercise.h"
+#include <iostream>
 
+using std::cout;
+using std::endl;
 
 
 int main()
@@ -11,6 +14,11 @@ int main()
     friends["Jan"] = std::pair<int, int> (36, 82);
     friends["Ina"] = std::pair<int, int> (26, 52);
 
+    auto oldest = get_oldest_friend(friends);
+    cout << "Oldest friend: " << oldest << endl;
+
+    auto heaviest = get_heaviest_friend(friends);
+    cout << "Heaviest friend: " << heaviest << endl;
 
 	return 0;
 }

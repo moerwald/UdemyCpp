@@ -2,6 +2,7 @@
 
 string get_oldest_friend(const Friends& friends)
 {
+
     return string();
 }
 
