@@ -145,9 +145,11 @@
   <ItemGroup>
     <ClCompile Include="ChronoMain.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TransformMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChronoMain.h" />
+    <ClInclude Include="TransformMain.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

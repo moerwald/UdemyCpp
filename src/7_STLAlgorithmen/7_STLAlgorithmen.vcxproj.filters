@@ -21,9 +21,15 @@
     <ClCompile Include="ChronoMain.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="TransformMain.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChronoMain.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformMain.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
