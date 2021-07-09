@@ -6,11 +6,12 @@ using std::endl;
 
 
 Image::Image()
-    : _width (0)
-    , _height (0)
+    : _width (1)
+    , _height (1)
     , _matrix(GraySclaeMatrix(_width, std::vector<uchar>(_height, 0)))
 {
     cout << "Default CTOR" << endl;
+    cout << "Matrix size: " << _matrix.size() << " ," << _matrix[0].size() << endl;
 }
 
 Image::Image(const unsigned int& width, const unsigned int& height)
@@ -21,6 +22,7 @@ Image::Image(const unsigned int& width, const unsigned int& height)
     cout << "Param CTOR" << endl;
 
     cout << "Created image object with shape=(" << _width << "," << _height << ")!" << endl;
+    cout << "Matrix size: " << _matrix.size() << " ," << _matrix[0].size() << endl;
 }
 
 Image::~Image()
