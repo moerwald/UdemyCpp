@@ -4,7 +4,7 @@
 
 
 using uchar = unsigned char;
-using GraySclaeMatrx = std::vector<std::vector<uchar>>;
+using GraySclaeMatrix = std::vector<std::vector<uchar>>;
 
 class Image
 {
@@ -16,5 +16,6 @@ public:
 private:
     unsigned int _width;
     unsigned int _height;
+    GraySclaeMatrix _matrix;
 };
 
