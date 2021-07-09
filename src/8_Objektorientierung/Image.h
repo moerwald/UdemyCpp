@@ -9,8 +9,9 @@ using GraySclaeMatrix = std::vector<std::vector<uchar>>;
 class Image
 {
 public:
+    Image();
     Image(const unsigned int &width, const unsigned int &height);
-    ~Image() {};
+    ~Image();
 
 
 private:
