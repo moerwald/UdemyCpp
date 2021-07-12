@@ -117,12 +117,9 @@ void Image::resize_image(const unsigned int new_width, const unsigned int new_he
 
 void Image::fill_image(const uchar value)
 {
-    for (size_t i = 0; i < _matrix.size(); i++)
+    for (auto& column : _matrix)
     {
-        for (size_t j = 0; j < _matrix[0].size(); j++)
-        {
-            _matrix[i][j] = value;
-        }
+        std::fill(column.begin(), column.end(), value);
     }
 }
 
