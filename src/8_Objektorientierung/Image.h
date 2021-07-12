@@ -12,6 +12,7 @@ public:
     Image();
     Image(const unsigned int &width, const unsigned int &height);
     ~Image();
+    void save_image(const char* file_name) const;
 
 
 private:

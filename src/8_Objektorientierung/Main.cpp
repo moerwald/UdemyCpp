@@ -2,7 +2,8 @@
 
 int main()
 {
-    Image im1(10, 10);
+    Image im1(400, 200);
+    im1.save_image("Image.bmp");
     Image im2;
     
     return 0;
