@@ -98,8 +98,20 @@ void Image::set_pixel(const unsigned int x, const unsigned int y, const uchar va
 void Image::resize_image(const unsigned int new_width, const unsigned int new_height)
 {
     _width = new_width;
-    _height = new_height;
-    _matrix = GraySclaeMatrix(_width, std::vector<uchar>(_height, 0));
+    if (_width != new_width)
+    {
+        _matrix.resize(new_width);
+        _width = new_width;
+    }
+
+    if (_height != new_height)
+    {
+        _height = new_height;
+        for (auto& v : _matrix)
+        {
+            v.resize(_height);
+        }
+    }
 }
 
 
@@ -120,7 +132,7 @@ void Image::draw_line(const unsigned int x1, const unsigned int y1, const unsign
     {
         for (size_t j = 0; j < _matrix[0].size(); j++)
         {
-            if (i == x1 )
+            if (i == x1)
                 if (j <= y1)
                     _matrix[i][j] = value;
 
@@ -129,5 +141,4 @@ void Image::draw_line(const unsigned int x1, const unsigned int y1, const unsign
                     _matrix[i][j] = value;
         }
     }
-
 }

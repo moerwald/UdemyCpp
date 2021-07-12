@@ -8,6 +8,8 @@ int main()
     im1.save_image("Image.bmp");
     im1.fill_image(0xAA);
     im1.save_image("Image.bmp");
+    im1.resize_image(200, 150);
+    im1.save_image("Image.bmp");
     im1.draw_line(50, 150, 150, 100, 0XFF);
     im1.save_image("Image.bmp");
     
