@@ -89,3 +89,8 @@ void Image::clear_image()
     _height = _width = 0;
 }
 
+void Image::set_pixel(const unsigned int x, const unsigned int y, const uchar value)
+{
+    _matrix[x][y] = value;
+}
+

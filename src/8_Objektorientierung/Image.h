@@ -14,6 +14,7 @@ public:
     ~Image();
     void save_image(const char* file_name) const;
     void clear_image();
+    void set_pixel(const unsigned int x, const unsigned int y, const uchar value);
 
 
 private:
