@@ -8,8 +8,8 @@ using std::endl;
 
 
 Image::Image()
-    : _width (1)
-    , _height (1)
+    : _width(1)
+    , _height(1)
     , _matrix(GraySclaeMatrix(_width, std::vector<uchar>(_height, 0)))
 {
     cout << "Default CTOR" << endl;
@@ -94,3 +94,22 @@ void Image::set_pixel(const unsigned int x, const unsigned int y, const uchar va
     _matrix[x][y] = value;
 }
 
+
+void Image::resize_image(const unsigned int new_width, const unsigned int new_height)
+{
+    _width = new_width;
+    _height = new_height;
+    _matrix = GraySclaeMatrix(_width, std::vector<uchar>(_height, 0));
+}
+
+
+void Image::fill_image(const uchar value)
+{
+    for (size_t i = 0; i < _matrix.size(); i++)
+    {
+        for (size_t j = 0; j < _matrix[0].size(); j++)
+        {
+            _matrix[i][j] = value;
+        }
+    }
+}
