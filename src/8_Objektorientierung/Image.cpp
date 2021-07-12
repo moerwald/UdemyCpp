@@ -83,3 +83,9 @@ void Image::save_image(const char* file_name) const
     fclose(f);
 }
 
+void Image::clear_image()
+{
+    _matrix.clear();
+    _height = _width = 0;
+}
+
