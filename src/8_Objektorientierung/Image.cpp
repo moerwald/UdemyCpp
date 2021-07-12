@@ -113,3 +113,21 @@ void Image::fill_image(const uchar value)
         }
     }
 }
+
+void Image::draw_line(const unsigned int x1, const unsigned int y1, const unsigned int x2, const unsigned int y2, const uchar value)
+{
+    for (size_t i = 0; i < _matrix.size(); i++)
+    {
+        for (size_t j = 0; j < _matrix[0].size(); j++)
+        {
+            if (i == x1 )
+                if (j <= y1)
+                    _matrix[i][j] = value;
+
+            if (j == y2)
+                if (i <= x2)
+                    _matrix[i][j] = value;
+        }
+    }
+
+}

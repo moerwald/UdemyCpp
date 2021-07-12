@@ -8,7 +8,8 @@ int main()
     im1.save_image("Image.bmp");
     im1.fill_image(0xAA);
     im1.save_image("Image.bmp");
-    Image im2;
+    im1.draw_line(50, 150, 150, 100, 0XFF);
+    im1.save_image("Image.bmp");
     
     return 0;
 }
