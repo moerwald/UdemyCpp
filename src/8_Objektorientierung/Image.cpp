@@ -129,13 +129,17 @@ void Image::draw_line(const unsigned int x1, const unsigned int y1, const unsign
     {
         for (size_t j = 0; j < _matrix[0].size(); j++)
         {
-            if (i == x1)
-                if (j <= y1)
+            // Horizontal
+            if (x1 == x2)
+                if (x1 == i)
                     _matrix[i][j] = value;
 
-            if (j == y2)
-                if (i <= x2)
+            // Vertical
+            if (y1 == y2)
+                if (y1 == j)
                     _matrix[i][j] = value;
         }
     }
 }
+
+
