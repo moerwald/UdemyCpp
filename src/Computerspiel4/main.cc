@@ -5,6 +5,7 @@
 #include <string>
 #include <map>
 #include <random>
+#include "main.h"
 
 using std::cout;
 using std::cin;
@@ -28,7 +29,7 @@ std::vector<Position> get_obstacles(const int& nr_of_obstacles, const int& max_x
     std::vector<Position> vec(nr_of_obstacles);
     for (size_t i = 0; i < nr_of_obstacles; i++)
     {
-        vec[i]= Position(distrib_x(gen), distrib_y(gen));
+        vec[i] = Position(distrib_x(gen), distrib_y(gen));
     }
 
     return vec;
@@ -70,6 +71,20 @@ void movePlayer(PlayerCoordinates& playerIndex)
         cout << "Unrecognized move!";
 }
 
+
+bool is_player_dead(const PlayerCoordinates& playerIndex, const std::vector<Position>& obstacles)
+{
+
+    for (auto& p : obstacles)
+    {
+        if (playerIndex.second == p.first && playerIndex.first == p.second)
+            return true;
+    }
+
+    return false;
+
+}
+
 bool shouldEndgame(const PlayerCoordinates& playerIndex)
 {
     if (playerIndex.second == LASTGAMEFIELD && playerIndex.first == NROFROWS - 1)
@@ -96,6 +111,13 @@ int main()
     {
         printGame(playerIndex, obstacles);
         movePlayer(playerIndex);
+        if (is_player_dead(playerIndex, obstacles))
+        {
+            std::cout << "Player is dead!" << std::endl;
+            std::cin.get();
+            break;
+        }
+
         clearScreen();
 
         quit = shouldEndgame(playerIndex);
