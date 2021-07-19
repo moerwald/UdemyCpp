@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <random>
 
 using std::cout;
 using std::cin;
@@ -11,20 +12,39 @@ using std::endl;
 using std::string;
 using std::vector;
 using PlayerCoordinates = std::pair<int, int>;
+using Position = std::pair<int, int>;
 
 const auto NROFELEMENTS = 10;
 const auto NROFROWS = 5;
 const auto LASTGAMEFIELD = NROFELEMENTS - 1;
 
-void printGame(const PlayerCoordinates& playerIndex)
+std::vector<Position> get_obstacles(const int& nr_of_obstacles, const int& max_x_value, const int& max_y_value)
 {
+    std::random_device rd;  //Will be used to obtain a seed for the random number engine
+    std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+    std::uniform_int_distribution<> distrib_x(0, max_x_value);
+    std::uniform_int_distribution<> distrib_y(0, max_y_value);
 
+    std::vector<Position> vec(nr_of_obstacles);
+    for (size_t i = 0; i < nr_of_obstacles; i++)
+    {
+        vec[i]= Position(distrib_x(gen), distrib_y(gen));
+    }
+
+    return vec;
+}
+
+void printGame(const PlayerCoordinates& playerIndex, const std::vector<Position>& obstacles)
+{
     auto&& game_board = vector<string>(NROFROWS, string(NROFELEMENTS, '.'));
 
     game_board[0][0] = '|';
     game_board[NROFROWS - 1][NROFELEMENTS - 1] = '|';
 
     game_board[playerIndex.first][playerIndex.second] = 'P';
+
+    for (auto& p : obstacles)
+        game_board[p.second][p.first] = 'X';
 
     for (const auto& row : game_board)
         cout << row << endl;
@@ -70,10 +90,11 @@ int main()
     auto quit = false;
     auto&& playerIndex = PlayerCoordinates(0, 0);
     const auto lastGameField = NROFELEMENTS - 1;
+    auto&& obstacles = get_obstacles(3, lastGameField, NROFROWS - 1);
 
     while (!quit)
     {
-        printGame(playerIndex);
+        printGame(playerIndex, obstacles);
         movePlayer(playerIndex);
         clearScreen();
 
