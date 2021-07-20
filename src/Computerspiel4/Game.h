@@ -15,6 +15,12 @@ class Game
 {
 public:
 
+    Game()
+        :m_exit(NROFROWS -1, NROFELEMENTS -1)
+    {
+
+    }
+
     Obstacles get_obstacles(const int& nr_of_obstacles, const int& max_x_value, const int& max_y_value);
     void up_date_game(const PlayerCoordinates& playerIndex, const Obstacles& obstacles);
     void print_game();
@@ -25,5 +31,8 @@ public:
 
 private:
     GameState m_game_state;
+    Position m_exit;
+
+    static constexpr Position m_player_starting_position = Position(0, 0);
 };
 

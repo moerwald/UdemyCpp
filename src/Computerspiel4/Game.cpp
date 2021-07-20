@@ -20,6 +20,11 @@ Obstacles Game::get_obstacles(const int& nr_of_obstacles, const int& max_x_value
     {
         obstacles[i].second = distrib_x(gen);
         obstacles[i].first = distrib_y(gen);
+
+        if (obstacles[i] == m_exit || obstacles[i] == m_player_starting_position)
+        {
+            --i;
+        }
     }
 
     return obstacles;
