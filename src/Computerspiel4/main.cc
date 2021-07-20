@@ -17,7 +17,8 @@ int main()
 
     while (!quit)
     {
-        game.print_game(playerIndex, obstacles);
+        game.up_date_game(playerIndex, obstacles);
+        game.print_game();
         game.move_player(playerIndex);
         if (game.is_player_dead(playerIndex, obstacles))
         {

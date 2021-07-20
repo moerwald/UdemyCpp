@@ -25,19 +25,22 @@ Obstacles Game::get_obstacles(const int& nr_of_obstacles, const int& max_x_value
     return obstacles;
 }
 
-void Game::print_game(const PlayerCoordinates& playerIndex, const Obstacles& obstacles)
+void Game::up_date_game(const PlayerCoordinates& playerIndex, const Obstacles& obstacles)
 {
-    auto&& game_board = std::vector<std::string>(NROFROWS, std::string(NROFELEMENTS, '.'));
+    m_game_state = GameState(NROFROWS, std::string(NROFELEMENTS, '.'));
 
-    game_board[0][0] = '|';
-    game_board[NROFROWS - 1][NROFELEMENTS - 1] = '|';
+    m_game_state[0][0] = '|';
+    m_game_state[NROFROWS - 1][NROFELEMENTS - 1] = '|';
 
-    game_board[playerIndex.first][playerIndex.second] = 'P';
+    m_game_state[playerIndex.first][playerIndex.second] = 'P';
 
     for (auto& p : obstacles)
-        game_board[p.second][p.first] = 'X';
+        m_game_state[p.second][p.first] = 'X';
+}
 
-    for (const auto& row : game_board)
+void Game::print_game()
+{
+    for (const auto& row : m_game_state)
         cout << row << endl;
 
     cout << endl;
