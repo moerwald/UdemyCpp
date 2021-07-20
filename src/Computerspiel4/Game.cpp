@@ -15,7 +15,7 @@ Obstacles Game::get_obstacles(const int& nr_of_obstacles, const int& max_x_value
     std::uniform_int_distribution<> distrib_x(0, max_x_value);
     std::uniform_int_distribution<> distrib_y(0, max_y_value);
 
-    Obstacles obstacles(nr_of_obstacles, Position(0,0));
+    Obstacles obstacles(nr_of_obstacles, Position(0, 0));
     for (size_t i = 0; i < nr_of_obstacles; i++)
     {
         obstacles[i].second = distrib_x(gen);
@@ -53,15 +53,29 @@ void Game::move_player(PlayerCoordinates& playerIndex)
     cin >> userInput;
 
     if (userInput == "d") // right
-         ++playerIndex.second;
+    {
+        if (playerIndex.second + 1 < NROFELEMENTS)
+            ++playerIndex.second;
+    }
     else if (userInput == "a") // left
-         --playerIndex.second;
+    {
+        if (playerIndex.second - 1 > 0)
+            --playerIndex.second;
+    }
     else if (userInput == "w") // up
-        --playerIndex.first;
+    {
+        if (playerIndex.first - 1 > 0)
+            --playerIndex.first;
+    }
     else if (userInput == "s") // down
-        ++playerIndex.first;
+    {
+        if (playerIndex.first + 1 < NROFROWS)
+            ++playerIndex.first;
+    }
     else
+    {
         cout << "Unrecognized move!";
+    }
 }
 
 bool Game::is_player_dead(const PlayerCoordinates& playerIndex, const Obstacles& obstacles)
