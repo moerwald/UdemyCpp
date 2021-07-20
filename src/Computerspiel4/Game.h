@@ -13,10 +13,10 @@ class Game
 public:
 
     std::vector<Position> get_obstacles(const int& nr_of_obstacles, const int& max_x_value, const int& max_y_value);
-    void printGame(const PlayerCoordinates& playerIndex, const std::vector<Position>& obstacles);
-    void movePlayer(PlayerCoordinates& playerIndex);
+    void print_game(const PlayerCoordinates& playerIndex, const std::vector<Position>& obstacles);
+    void move_player(PlayerCoordinates& playerIndex);
     bool is_player_dead(const PlayerCoordinates& playerIndex, const std::vector<Position>& obstacles);
-    bool shouldEndgame(const PlayerCoordinates& playerIndex);
-    void clearScreen();
+    bool should_game_end(const PlayerCoordinates& playerIndex);
+    void clear_screen();
 };
 

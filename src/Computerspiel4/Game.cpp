@@ -24,7 +24,7 @@ std::vector<Position> Game::get_obstacles(const int& nr_of_obstacles, const int&
     return vec;
 }
 
-void Game::printGame(const PlayerCoordinates& playerIndex, const std::vector<Position>& obstacles)
+void Game::print_game(const PlayerCoordinates& playerIndex, const std::vector<Position>& obstacles)
 {
     auto&& game_board = std::vector<std::string>(NROFROWS, std::string(NROFELEMENTS, '.'));
 
@@ -42,7 +42,7 @@ void Game::printGame(const PlayerCoordinates& playerIndex, const std::vector<Pos
     cout << endl;
 }
 
-void Game::movePlayer(PlayerCoordinates& playerIndex)
+void Game::move_player(PlayerCoordinates& playerIndex)
 {
     std::string userInput{};
     cout << "Move (wasd): ";
@@ -71,7 +71,7 @@ bool Game::is_player_dead(const PlayerCoordinates& playerIndex, const std::vecto
     return false;
 }
 
-bool Game::shouldEndgame(const PlayerCoordinates& playerIndex)
+bool Game::should_game_end(const PlayerCoordinates& playerIndex)
 {
     if (playerIndex.second == LASTGAMEFIELD && playerIndex.first == NROFROWS - 1)
     {
@@ -81,7 +81,7 @@ bool Game::shouldEndgame(const PlayerCoordinates& playerIndex)
     return false;
 }
 
-void Game::clearScreen()
+void Game::clear_screen()
 {
     system("cls");
 }
