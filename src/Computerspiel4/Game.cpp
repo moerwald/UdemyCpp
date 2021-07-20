@@ -91,7 +91,7 @@ bool Game::is_player_dead(const PlayerCoordinates& playerIndex, const Obstacles&
 {
     for (auto& obstacle : obstacles)
     {
-        if (playerIndex.second == obstacle.second && playerIndex.first == obstacle.first)
+        if (playerIndex == obstacle)
         {
             return true;
         }
@@ -102,7 +102,7 @@ bool Game::is_player_dead(const PlayerCoordinates& playerIndex, const Obstacles&
 
 bool Game::should_game_end(const PlayerCoordinates& playerIndex)
 {
-    if (playerIndex.second == LASTGAMEFIELD && playerIndex.first == NROFROWS - 1)
+    if (playerIndex == m_exit)
     {
         cout << "Your reached the end";
         return true;
