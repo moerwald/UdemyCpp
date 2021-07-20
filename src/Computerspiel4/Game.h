@@ -20,6 +20,7 @@ public:
     {
     }
 
+    void start();
     void get_obstacles();
     void up_date_game();
     void print_game();

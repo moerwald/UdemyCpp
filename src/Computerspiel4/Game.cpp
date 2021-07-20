@@ -17,6 +17,34 @@ Position&& Game::generate_random(const int x_min, const int x_max, const int y_m
     return Position(distrib_y(gen), distrib_x(gen));
 }
 
+void Game::start()
+{
+    auto quit = false;
+    auto&& playerIndex = PlayerCoordinates(0, 0);
+    get_obstacles();
+
+    while (!quit)
+    {
+        up_date_game();
+        if (is_player_dead())
+        {
+            std::cout << "Player is dead!" << std::endl;
+            std::cin.get();
+            break;
+        }
+
+        clear_screen();
+
+        print_game();
+        move_player();
+
+        quit = should_game_end();
+        if (quit)
+        {
+            std::cout << "Your reached the end";
+        }
+    }
+}
 
 void Game::get_obstacles()
 {
