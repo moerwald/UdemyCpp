@@ -8,7 +8,9 @@ using std::cin;
 using std::endl;
 
 
-Obstacles Game::get_obstacles(const int& nr_of_obstacles, const int& max_x_value, const int& max_y_value)
+Obstacles Game::get_obstacles(const int& nr_of_obstacles,
+                              const int& max_x_value,
+                              const int& max_y_value)
 {
     std::random_device rd;  //Will be used to obtain a seed for the random number engine
     std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
@@ -30,7 +32,8 @@ Obstacles Game::get_obstacles(const int& nr_of_obstacles, const int& max_x_value
     return obstacles;
 }
 
-void Game::up_date_game(const PlayerCoordinates& playerIndex, const Obstacles& obstacles)
+void Game::up_date_game(const PlayerCoordinates& playerIndex,
+                        const Obstacles& obstacles)
 {
     m_game_state = GameState(NROFROWS, std::string(NROFELEMENTS, '.'));
 
@@ -87,7 +90,8 @@ void Game::move_player(PlayerCoordinates& playerIndex)
     }
 }
 
-bool Game::is_player_dead(const PlayerCoordinates& playerIndex, const Obstacles& obstacles)
+bool Game::is_player_dead(const PlayerCoordinates& playerIndex,
+                          const Obstacles& obstacles)
 {
     for (auto& obstacle : obstacles)
     {
