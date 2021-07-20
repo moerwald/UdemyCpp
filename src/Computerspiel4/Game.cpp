@@ -7,6 +7,16 @@ using std::cout;
 using std::cin;
 using std::endl;
 
+Position&& Game::generate_random(const int x_min, const int x_max, const int y_min, const int y_max)
+{
+    std::random_device rd;  //Will be used to obtain a seed for the random number engine
+    std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+    std::uniform_int_distribution<> distrib_x(x_min, x_max);
+    std::uniform_int_distribution<> distrib_y(y_min, y_max);
+
+    return Position(distrib_y(gen), distrib_x(gen));
+}
+
 
 void Game::get_obstacles()
 {
@@ -17,8 +27,9 @@ void Game::get_obstacles()
 
     for (size_t i = 0; i < m_obstacles.size(); i++)
     {
-        m_obstacles[i].second = distrib_x(gen);
-        m_obstacles[i].first = distrib_y(gen);
+        auto&& pos = generate_random(0, NROFCOLUMNS - 1, 0, NROFROWS - 1);
+        m_obstacles[i].second = pos.second;
+        m_obstacles[i].first = pos.first;
 
         if (m_obstacles[i] == m_exit || m_obstacles[i] == m_player_starting_position)
         {
@@ -36,9 +47,9 @@ void Game::up_date_game()
 
     m_game_state[m_player_coordinates.first][m_player_coordinates.second] = 'P';
 
-    for (auto& p : m_obstacles)
+    for (auto& obstacle : m_obstacles)
     {
-        m_game_state[p.first][p.second] = 'X';
+        m_game_state[obstacle.first][obstacle.second] = 'X';
     }
 }
 

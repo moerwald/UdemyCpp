@@ -29,6 +29,8 @@ public:
     void clear_screen();
 
 private:
+    Position&& generate_random(const int x_min, const int x_max, const int y_min, const int y_max);
+
     GameState m_game_state;
     Position m_exit;
     Obstacles m_obstacles;
