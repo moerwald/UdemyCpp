@@ -18,8 +18,8 @@ Obstacles Game::get_obstacles(const int& nr_of_obstacles, const int& max_x_value
     Obstacles obstacles(nr_of_obstacles, Position(0,0));
     for (size_t i = 0; i < nr_of_obstacles; i++)
     {
-        obstacles[i].first = distrib_x(gen);
-        obstacles[i].second = distrib_y(gen);
+        obstacles[i].second = distrib_x(gen);
+        obstacles[i].first = distrib_y(gen);
     }
 
     return obstacles;
@@ -35,7 +35,7 @@ void Game::up_date_game(const PlayerCoordinates& playerIndex, const Obstacles& o
     m_game_state[playerIndex.first][playerIndex.second] = 'P';
 
     for (auto& p : obstacles)
-        m_game_state[p.second][p.first] = 'X';
+        m_game_state[p.first][p.second] = 'X';
 }
 
 void Game::print_game()
@@ -66,9 +66,9 @@ void Game::move_player(PlayerCoordinates& playerIndex)
 
 bool Game::is_player_dead(const PlayerCoordinates& playerIndex, const Obstacles& obstacles)
 {
-    for (auto& p : obstacles)
+    for (auto& obstacle : obstacles)
     {
-        if (playerIndex.second == p.first && playerIndex.first == p.second)
+        if (playerIndex.second == obstacle.second && playerIndex.first == obstacle.first)
             return true;
     }
 
