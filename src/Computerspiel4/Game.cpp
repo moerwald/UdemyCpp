@@ -40,13 +40,17 @@ void Game::up_date_game(const PlayerCoordinates& playerIndex, const Obstacles& o
     m_game_state[playerIndex.first][playerIndex.second] = 'P';
 
     for (auto& p : obstacles)
+    {
         m_game_state[p.first][p.second] = 'X';
+    }
 }
 
 void Game::print_game()
 {
     for (const auto& row : m_game_state)
+    {
         cout << row << endl;
+    }
 
     cout << endl;
 }
@@ -88,7 +92,9 @@ bool Game::is_player_dead(const PlayerCoordinates& playerIndex, const Obstacles&
     for (auto& obstacle : obstacles)
     {
         if (playerIndex.second == obstacle.second && playerIndex.first == obstacle.first)
+        {
             return true;
+        }
     }
 
     return false;
