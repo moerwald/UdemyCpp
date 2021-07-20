@@ -53,13 +53,13 @@ void Game::move_player(PlayerCoordinates& playerIndex)
     cin >> userInput;
 
     if (userInput == "d") // right
-        playerIndex.second = ++playerIndex.second;
+         ++playerIndex.second;
     else if (userInput == "a") // left
-        playerIndex.second = --playerIndex.second;
+         --playerIndex.second;
     else if (userInput == "w") // up
-        playerIndex.first = --playerIndex.first;
+        --playerIndex.first;
     else if (userInput == "s") // down
-        playerIndex.first = ++playerIndex.first;
+        ++playerIndex.first;
     else
         cout << "Unrecognized move!";
 }
