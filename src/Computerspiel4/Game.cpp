@@ -25,7 +25,6 @@ void Game::get_obstacles()
             --i;
         }
     }
-
 }
 
 void Game::up_date_game()

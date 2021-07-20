@@ -16,6 +16,7 @@ public:
         : m_exit(NROFROWS - 1, NROFCOLUMNS - 1)
         , m_obstacles(nr_of_obstacles, Position(0, 0))
         , m_player_coordinates(0, 0)
+//        , m_game_state(NROFROWS, std::string(NROFCOLUMNS, '.'))
     {
     }
 
