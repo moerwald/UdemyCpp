@@ -8,23 +8,24 @@ using std::cin;
 using std::endl;
 
 
-std::vector<Position> Game::get_obstacles(const int& nr_of_obstacles, const int& max_x_value, const int& max_y_value)
+Obstacles Game::get_obstacles(const int& nr_of_obstacles, const int& max_x_value, const int& max_y_value)
 {
     std::random_device rd;  //Will be used to obtain a seed for the random number engine
     std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
     std::uniform_int_distribution<> distrib_x(0, max_x_value);
     std::uniform_int_distribution<> distrib_y(0, max_y_value);
 
-    std::vector<Position> vec(nr_of_obstacles);
+    Obstacles obstacles(nr_of_obstacles, Position(0,0));
     for (size_t i = 0; i < nr_of_obstacles; i++)
     {
-        vec[i] = Position(distrib_x(gen), distrib_y(gen));
+        obstacles[i].first = distrib_x(gen);
+        obstacles[i].second = distrib_y(gen);
     }
 
-    return vec;
+    return obstacles;
 }
 
-void Game::print_game(const PlayerCoordinates& playerIndex, const std::vector<Position>& obstacles)
+void Game::print_game(const PlayerCoordinates& playerIndex, const Obstacles& obstacles)
 {
     auto&& game_board = std::vector<std::string>(NROFROWS, std::string(NROFELEMENTS, '.'));
 
@@ -60,7 +61,7 @@ void Game::move_player(PlayerCoordinates& playerIndex)
         cout << "Unrecognized move!";
 }
 
-bool Game::is_player_dead(const PlayerCoordinates& playerIndex, const std::vector<Position>& obstacles)
+bool Game::is_player_dead(const PlayerCoordinates& playerIndex, const Obstacles& obstacles)
 {
     for (auto& p : obstacles)
     {
