@@ -22,6 +22,7 @@ public:
 
     void start();
     void get_obstacles();
+    void move_obstacles();
     void up_date_game();
     void print_game();
     void move_player();
@@ -40,5 +41,7 @@ private:
     static constexpr Position m_player_starting_position = Position(0, 0);
     static constexpr int NROFCOLUMNS = 10;
     static constexpr int NROFROWS = 5;
+    static constexpr int LAST_X = NROFCOLUMNS - 1;
+    static constexpr int LAST_Y = NROFROWS -1;
 };
 

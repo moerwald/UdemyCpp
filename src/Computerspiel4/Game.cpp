@@ -21,22 +21,29 @@ void Game::start()
 {
     auto quit = false;
     auto&& playerIndex = PlayerCoordinates(0, 0);
+    auto player_dead = false;
     get_obstacles();
 
     while (!quit)
     {
+        clear_screen();
         up_date_game();
-        if (is_player_dead())
+        print_game();
+
+        move_player();
+        player_dead = is_player_dead();
+        move_obstacles();
+        player_dead = is_player_dead();
+
+        if (player_dead)
         {
+            clear_screen();
+            up_date_game();
+            print_game();
             std::cout << "Player is dead!" << std::endl;
             std::cin.get();
             break;
         }
-
-        clear_screen();
-
-        print_game();
-        move_player();
 
         quit = should_game_end();
         if (quit)
@@ -62,6 +69,30 @@ void Game::get_obstacles()
         if (m_obstacles[i] == m_exit || m_obstacles[i] == m_player_starting_position)
         {
             --i;
+        }
+    }
+}
+
+void Game::move_obstacles()
+{
+    for (auto& obstacle : m_obstacles)
+    {
+        auto&& pos = generate_random(-1, 1, -1, 1);
+        auto new_y = obstacle.first + pos.first;
+        auto new_x = obstacle.second + pos.second;
+        // Max bound check
+        if ((new_x <= LAST_X)
+            && (new_y <= LAST_Y)
+            // Min bound check
+            && (new_x >= 0)
+            && (new_y >= 0)
+            // Obstacle not on player check
+            //&& (new_x != m_player_coordinates.first)
+            //&& (new_y != m_player_coordinates.second))
+            )
+        {
+            obstacle.first = new_y;
+            obstacle.second = new_x;
         }
     }
 }
