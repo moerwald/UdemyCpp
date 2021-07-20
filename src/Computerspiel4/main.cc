@@ -10,15 +10,15 @@
 
 int main()
 {
-    Game game;
+    Game game(3);
     auto quit = false;
     auto&& playerIndex = PlayerCoordinates(0, 0);
-    auto&& obstacles = game.get_obstacles(3, LASTGAMEFIELD, NROFROWS - 1);
+    game.get_obstacles();
 
     while (!quit)
     {
-        game.up_date_game(playerIndex, obstacles);
-        if (game.is_player_dead(playerIndex, obstacles))
+        game.up_date_game();
+        if (game.is_player_dead())
         {
             std::cout << "Player is dead!" << std::endl;
             std::cin.get();
@@ -28,9 +28,14 @@ int main()
         game.clear_screen();
 
         game.print_game();
-        game.move_player(playerIndex);
+        game.move_player();
 
-        quit = game.should_game_end(playerIndex);
+        quit = game.should_game_end();
+        if (quit)
+        {
+            std::cout << "Your reached the end";
+        }
+
     }
     return 0;
 }

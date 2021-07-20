@@ -8,41 +8,36 @@ using std::cin;
 using std::endl;
 
 
-Obstacles Game::get_obstacles(const int& nr_of_obstacles,
-                              const int& max_x_value,
-                              const int& max_y_value)
+void Game::get_obstacles()
 {
     std::random_device rd;  //Will be used to obtain a seed for the random number engine
     std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
-    std::uniform_int_distribution<> distrib_x(0, max_x_value);
-    std::uniform_int_distribution<> distrib_y(0, max_y_value);
+    std::uniform_int_distribution<> distrib_x(0, NROFCOLUMNS - 1);
+    std::uniform_int_distribution<> distrib_y(0, NROFROWS - 1);
 
-    Obstacles obstacles(nr_of_obstacles, Position(0, 0));
-    for (size_t i = 0; i < nr_of_obstacles; i++)
+    for (size_t i = 0; i < m_obstacles.size(); i++)
     {
-        obstacles[i].second = distrib_x(gen);
-        obstacles[i].first = distrib_y(gen);
+        m_obstacles[i].second = distrib_x(gen);
+        m_obstacles[i].first = distrib_y(gen);
 
-        if (obstacles[i] == m_exit || obstacles[i] == m_player_starting_position)
+        if (m_obstacles[i] == m_exit || m_obstacles[i] == m_player_starting_position)
         {
             --i;
         }
     }
 
-    return obstacles;
 }
 
-void Game::up_date_game(const PlayerCoordinates& playerIndex,
-                        const Obstacles& obstacles)
+void Game::up_date_game()
 {
-    m_game_state = GameState(NROFROWS, std::string(NROFELEMENTS, '.'));
+    m_game_state = GameState(NROFROWS, std::string(NROFCOLUMNS, '.'));
 
     m_game_state[0][0] = '|';
-    m_game_state[NROFROWS - 1][NROFELEMENTS - 1] = '|';
+    m_game_state[NROFROWS - 1][NROFCOLUMNS - 1] = '|';
 
-    m_game_state[playerIndex.first][playerIndex.second] = 'P';
+    m_game_state[m_player_coordinates.first][m_player_coordinates.second] = 'P';
 
-    for (auto& p : obstacles)
+    for (auto& p : m_obstacles)
     {
         m_game_state[p.first][p.second] = 'X';
     }
@@ -58,7 +53,7 @@ void Game::print_game()
     cout << endl;
 }
 
-void Game::move_player(PlayerCoordinates& playerIndex)
+void Game::move_player()
 {
     std::string userInput{};
     cout << "Move (wasd): ";
@@ -66,23 +61,23 @@ void Game::move_player(PlayerCoordinates& playerIndex)
 
     if (userInput == "d") // right
     {
-        if (playerIndex.second + 1 < NROFELEMENTS)
-            ++playerIndex.second;
+        if (m_player_coordinates.second + 1 < NROFCOLUMNS)
+            ++m_player_coordinates.second;
     }
     else if (userInput == "a") // left
     {
-        if (playerIndex.second - 1 > 0)
-            --playerIndex.second;
+        if (m_player_coordinates.second - 1 > 0)
+            --m_player_coordinates.second;
     }
     else if (userInput == "w") // up
     {
-        if (playerIndex.first - 1 > 0)
-            --playerIndex.first;
+        if (m_player_coordinates.first - 1 > 0)
+            --m_player_coordinates.first;
     }
     else if (userInput == "s") // down
     {
-        if (playerIndex.first + 1 < NROFROWS)
-            ++playerIndex.first;
+        if (m_player_coordinates.first + 1 < NROFROWS)
+            ++m_player_coordinates.first;
     }
     else
     {
@@ -90,12 +85,11 @@ void Game::move_player(PlayerCoordinates& playerIndex)
     }
 }
 
-bool Game::is_player_dead(const PlayerCoordinates& playerIndex,
-                          const Obstacles& obstacles)
+bool Game::is_player_dead()
 {
-    for (auto& obstacle : obstacles)
+    for (auto& obstacle : m_obstacles)
     {
-        if (playerIndex == obstacle)
+        if (m_player_coordinates == obstacle)
         {
             return true;
         }
@@ -104,11 +98,10 @@ bool Game::is_player_dead(const PlayerCoordinates& playerIndex,
     return false;
 }
 
-bool Game::should_game_end(const PlayerCoordinates& playerIndex)
+bool Game::should_game_end()
 {
-    if (playerIndex == m_exit)
+    if (m_player_coordinates == m_exit)
     {
-        cout << "Your reached the end";
         return true;
     }
     return false;

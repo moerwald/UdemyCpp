@@ -7,32 +7,34 @@ using Position = std::pair<int, int>;
 using Obstacles = std::vector<Position>;
 using GameState = std::vector<std::string>;
 
-constexpr auto NROFELEMENTS = 10;
-constexpr auto NROFROWS = 5;
-constexpr auto LASTGAMEFIELD = NROFELEMENTS - 1;
 
 class Game
 {
 public:
 
-    Game()
-        :m_exit(NROFROWS -1, NROFELEMENTS -1)
+    Game(const int nr_of_obstacles)
+        : m_exit(NROFROWS - 1, NROFCOLUMNS - 1)
+        , m_obstacles(nr_of_obstacles, Position(0, 0))
+        , m_player_coordinates(0, 0)
     {
-
     }
 
-    Obstacles get_obstacles(const int& nr_of_obstacles, const int& max_x_value, const int& max_y_value);
-    void up_date_game(const PlayerCoordinates& playerIndex, const Obstacles& obstacles);
+    void get_obstacles();
+    void up_date_game();
     void print_game();
-    void move_player(PlayerCoordinates& playerIndex);
-    bool is_player_dead(const PlayerCoordinates& playerIndex, const Obstacles& obstacles);
-    bool should_game_end(const PlayerCoordinates& playerIndex);
+    void move_player();
+    bool is_player_dead();
+    bool should_game_end();
     void clear_screen();
 
 private:
     GameState m_game_state;
     Position m_exit;
+    Obstacles m_obstacles;
+    PlayerCoordinates m_player_coordinates;
 
     static constexpr Position m_player_starting_position = Position(0, 0);
+    static constexpr int NROFCOLUMNS = 10;
+    static constexpr int NROFROWS = 5;
 };
 
