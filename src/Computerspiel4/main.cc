@@ -18,8 +18,6 @@ int main()
     while (!quit)
     {
         game.up_date_game(playerIndex, obstacles);
-        game.print_game();
-        game.move_player(playerIndex);
         if (game.is_player_dead(playerIndex, obstacles))
         {
             std::cout << "Player is dead!" << std::endl;
@@ -28,6 +26,9 @@ int main()
         }
 
         game.clear_screen();
+
+        game.print_game();
+        game.move_player(playerIndex);
 
         quit = game.should_game_end(playerIndex);
     }
