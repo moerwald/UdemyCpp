@@ -21,7 +21,6 @@ void Game::start()
 {
     auto quit = false;
     auto&& playerIndex = PlayerCoordinates(0, 0);
-    auto player_dead = false;
     get_obstacles();
 
     while (!quit)
@@ -31,15 +30,10 @@ void Game::start()
         print_game();
 
         move_player();
-        player_dead = is_player_dead();
         move_obstacles();
-        player_dead = is_player_dead();
 
-        if (player_dead)
+        if (is_player_dead())
         {
-            clear_screen();
-            up_date_game();
-            print_game();
             std::cout << "Player is dead!" << std::endl;
             std::cin.get();
             break;
