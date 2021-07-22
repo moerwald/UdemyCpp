@@ -40,6 +40,51 @@ Matrix& Matrix::operator-=(const Matrix& rhs)
     return *this;
 }
 
+Matrix Matrix::operator*(const double& rhs)
+{
+    return Matrix(
+        get_A() * rhs,
+        get_B() * rhs,
+        get_C() * rhs,
+        get_D() * rhs
+    );
+}
+
+Matrix& Matrix::operator*=(const double& rhs)
+{
+    // TODO: insert return statement here
+}
+
+Matrix Matrix::operator*(const Matrix& rhs)
+{
+    return Matrix();
+}
+
+Matrix& Matrix::operator*=(const Matrix& rhs)
+{
+    // TODO: insert return statement here
+}
+
+Matrix Matrix::operator/(const double& rhs)
+{
+    return Matrix();
+}
+
+Matrix& Matrix::operator/=(const double& rhs)
+{
+    // TODO: insert return statement here
+}
+
+Matrix Matrix::operator/(const Matrix& rhs)
+{
+    return Matrix();
+}
+
+Matrix& Matrix::operator/=(const Matrix& rhs)
+{
+    // TODO: insert return statement here
+}
+
 void Matrix::set_A(const double& a)
 {
     m_A = a;
