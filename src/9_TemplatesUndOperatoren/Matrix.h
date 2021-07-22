@@ -32,8 +32,6 @@ class Matrix
     Matrix& operator*=(const Matrix& rhs);
     Matrix operator/(const double& rhs);
     Matrix& operator/=(const double& rhs);
-    Matrix operator/(const Matrix& rhs);
-    Matrix& operator/=(const Matrix& rhs);
 
     void set_A(const double& a);
     void set_B(const double& b);

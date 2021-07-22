@@ -52,37 +52,47 @@ Matrix Matrix::operator*(const double& rhs)
 
 Matrix& Matrix::operator*=(const double& rhs)
 {
-    // TODO: insert return statement here
+    set_A(get_A() * rhs);
+    set_B(get_B() * rhs);
+    set_C(get_C() * rhs);
+    set_D(get_D() * rhs);
+
+    return *this;
 }
 
 Matrix Matrix::operator*(const Matrix& rhs)
 {
-    return Matrix();
+    return Matrix(
+        get_A() * rhs.get_A() + get_B() * rhs.get_C(),
+        get_A() * rhs.get_B() + get_B() * rhs.get_D(),
+        get_C() * rhs.get_A() + get_D() * rhs.get_C(),
+        get_C() * rhs.get_C() + get_D() * rhs.get_D()
+    );
 }
 
 Matrix& Matrix::operator*=(const Matrix& rhs)
 {
-    // TODO: insert return statement here
+    *this = *this * rhs;
+    return *this;
 }
 
 Matrix Matrix::operator/(const double& rhs)
 {
-    return Matrix();
+    return Matrix(
+        get_A() / rhs,
+        get_B() / rhs,
+        get_C() / rhs,
+        get_D() / rhs
+    );
 }
 
 Matrix& Matrix::operator/=(const double& rhs)
 {
-    // TODO: insert return statement here
-}
-
-Matrix Matrix::operator/(const Matrix& rhs)
-{
-    return Matrix();
-}
-
-Matrix& Matrix::operator/=(const Matrix& rhs)
-{
-    // TODO: insert return statement here
+    set_A(get_A() / rhs);
+    set_B(get_B() / rhs);
+    set_C(get_C() / rhs);
+    set_D(get_D() / rhs);
+    return *this;
 }
 
 void Matrix::set_A(const double& a)
