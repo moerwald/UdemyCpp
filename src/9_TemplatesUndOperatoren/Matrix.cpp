@@ -1,6 +1,45 @@
 #include "Matrix.h"
 #include <iostream>
 
+Matrix Matrix::operator+(const Matrix& rhs)
+{
+    return Matrix(
+        get_A() + rhs.get_A(),
+        get_B() + rhs.get_B(),
+        get_C() + rhs.get_C(),
+        get_D() + rhs.get_D()
+    );
+}
+
+Matrix& Matrix::operator+=(const Matrix& rhs)
+{
+    set_A(get_A() + rhs.get_A());
+    set_B(get_B() + rhs.get_B());
+    set_C(get_C() + rhs.get_C());
+    set_D(get_D() + rhs.get_D());
+
+    return *this;
+}
+
+Matrix Matrix::operator-(const Matrix& rhs)
+{
+    return Matrix(
+        get_A() - rhs.get_A(),
+        get_B() - rhs.get_B(),
+        get_C() - rhs.get_C(),
+        get_D() - rhs.get_D()
+    );
+}
+
+Matrix& Matrix::operator-=(const Matrix& rhs)
+{
+    set_A(get_A() - rhs.get_A());
+    set_B(get_B() - rhs.get_B());
+    set_C(get_C() - rhs.get_C());
+    set_D(get_D() - rhs.get_D());
+    return *this;
+}
+
 void Matrix::set_A(const double& a)
 {
     m_A = a;
