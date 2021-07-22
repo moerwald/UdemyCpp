@@ -7,8 +7,10 @@ public:
     DynamicArray<T>(const T& value, const std::size_t& length);
 
     void push_back(const T& value);
-
     void pop_back();
+
+    T& operator[](const std::size_t& index);
+    const T& operator[](const std::size_t& index) const;
 
     std::size_t get_length() const;
 
@@ -32,7 +34,7 @@ DynamicArray<T>::DynamicArray(const T& value, const std::size_t& length)
 template <typename T>
 void DynamicArray<T>::push_back(const T& value)
 {
-    T *temp = new double[m_length + 1];
+    T* temp = new double[m_length + 1];
 
     for (size_t i = 0; i < m_length; i++)
     {
@@ -50,7 +52,7 @@ void DynamicArray<T>::push_back(const T& value)
 template <typename T>
 void DynamicArray<T>::pop_back()
 {
-    double *temp = new double[m_length - 1];
+    double* temp = new double[m_length - 1];
 
     for (size_t i = 0; i < m_length; i++)
     {
@@ -60,6 +62,18 @@ void DynamicArray<T>::pop_back()
     delete[] m_data;
     m_data = temp;
     m_length--;
+}
+
+template <typename T>
+T& DynamicArray<T>::operator[](const std::size_t& index)
+{
+    return m_data[index];
+}
+
+template <typename T>
+const T& DynamicArray<T>::operator[](const std::size_t& index) const
+{
+    return m_data[index];
 }
 
 template <typename T>
