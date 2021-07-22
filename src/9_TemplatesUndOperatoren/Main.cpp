@@ -13,5 +13,12 @@ int main()
     m3.print();
     Matrix m4 = std::move(m1 - m2);
     m4.print();
+
+    m1 -= m1;
+    m1.print();
+
+    m2 += m2;
+    m2.print();
+
     return 0;
 }
