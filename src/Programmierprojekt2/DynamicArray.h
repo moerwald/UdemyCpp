@@ -12,19 +12,22 @@ public:
     T& operator[](const std::size_t& index);
     const T& operator[](const std::size_t& index) const;
 
-    std::size_t get_length() const;
+    std::size_t length() const;
 
 private:
-    double* m_data;
     std::size_t m_length;
+    std::size_t m_capacity;
+    double* m_data;
 };
 
 
 template <typename T>
 DynamicArray<T>::DynamicArray(const T& value, const std::size_t& length)
+    : m_length(length)
+    , m_capacity(length)
+    , m_data(new T[length])
+
 {
-    m_length = length;
-    m_data = new T[length];
     for (size_t i = 0; i < length; i++)
     {
         m_data[i] = value;
@@ -34,17 +37,25 @@ DynamicArray<T>::DynamicArray(const T& value, const std::size_t& length)
 template <typename T>
 void DynamicArray<T>::push_back(const T& value)
 {
-    T* temp = new double[m_length + 1];
-
-    for (size_t i = 0; i < m_length; i++)
+    if (m_length == m_capacity)
     {
-        temp[i] = m_data[i];
+        // Increase capacity
+        m_capacity *= 2;
+        T* temp = new T[m_capacity];
+
+        // Copy memory to new one
+        for (size_t i = 0; i < m_length; i++)
+        {
+            temp[i] = m_data[i];
+        }
+
+        // delete old memory
+        delete[] m_data;
+        m_data = temp;
     }
 
-    temp[m_length] = value;
-
-    delete[] m_data;
-    m_data = temp;
+    // Append to the end
+    m_data[m_length] = value;
     m_length++;
 
 }
@@ -52,16 +63,26 @@ void DynamicArray<T>::push_back(const T& value)
 template <typename T>
 void DynamicArray<T>::pop_back()
 {
-    double* temp = new double[m_length - 1];
-
-    for (size_t i = 0; i < m_length; i++)
+    if (m_length == 0)
     {
-        temp[i] = m_data[i];
+        return;
     }
 
-    delete[] m_data;
-    m_data = temp;
     m_length--;
+    if (m_length < (m_capacity / 2))
+    {
+        m_capacity /= 2;
+        T* temp = new T[m_capacity];
+
+        for (size_t i = 0; i < m_length; i++)
+        {
+            temp[i] = m_data[i];
+        }
+
+        delete[] m_data;
+        m_data = temp;
+    }
+
 }
 
 template <typename T>
@@ -77,7 +98,7 @@ const T& DynamicArray<T>::operator[](const std::size_t& index) const
 }
 
 template <typename T>
-std::size_t  DynamicArray<T>::get_length() const
+std::size_t  DynamicArray<T>::length() const
 {
     return m_length;
 }
