@@ -1,4 +1,5 @@
 #include "DynamicArray.h"
+#include "AlgoArray.h"
 #include <iostream>
 #include <cstddef>
 
@@ -30,6 +31,12 @@ int main()
     {
         std::cout << arr[i] << std::endl;
     }
+
+    std::cout << "Mean: " << Mean(arr) << std::endl;
+    std::cout << "Median: " << Median(arr) << std::endl;
+
+    std::cout << "Variance: " << Variance(arr) << std::endl;
+    std::cout << "StdDev: " << StdDev(arr) << std::endl;
 
     return 0;
 }
