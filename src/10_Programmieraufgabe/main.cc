@@ -21,21 +21,8 @@ int main()
     std::cout << std::endl;
 
     // Aufgabe 1
-    auto check_has_no_even = [](std::vector<int>::iterator it_begin, const std::vector<int>::iterator it_end) {
-        while (it_begin != it_end)
-        {
-            if (*it_begin % 2 == 0)
-            {
-                return false;
-            }
 
-            it_begin++;
-        }
-
-        return true;
-    };
-
-    auto has_no_even = check_has_no_even(my_vector.begin(), my_vector.end());
+    auto has_no_even = std::ranges::none_of(my_vector.begin(), my_vector.end(), [](auto x) {return x % 2 == 0; });
 
     if (has_no_even)
     {
