@@ -23,7 +23,6 @@ int main()
     // Aufgabe 1
 
     auto has_no_even = std::ranges::none_of(my_vector.begin(), my_vector.end(), [](auto x) {return x % 2 == 0; });
-
     if (has_no_even)
     {
         std::cout << "None of them are even" << std::endl;
@@ -35,7 +34,7 @@ int main()
 
     // Aufgabe 2
     //...
-    std::transform(my_vector.begin(), my_vector.end(), my_result.begin(), [](int x) { pow(x, 2.0); });
+    std::transform(my_vector.begin(), my_vector.end(), my_result.begin(), [](auto x) { return pow(x, 2.0); });
 
     for (const auto& val : my_result)
     {
