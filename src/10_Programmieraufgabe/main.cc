@@ -48,7 +48,7 @@ int main()
 
     // Aufgabe 2
     //...
-    std::transform(my_vector.begin(), my_vector.end(), my_result.begin(), [](int x) { return x * x; });
+    std::transform(my_vector.begin(), my_vector.end(), my_result.begin(), [](int x) { pow(x, 2.0); });
 
     for (const auto& val : my_result)
     {
