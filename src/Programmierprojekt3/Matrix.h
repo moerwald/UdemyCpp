@@ -5,7 +5,7 @@
 template <typename T>
 class Matrix
 {
-    public:
+public:
     Matrix()
         : m_A(0)
         , m_B(0)
@@ -15,9 +15,9 @@ class Matrix
     }
 
     Matrix(const T& a,
-           const T& b,
-           const T& c,
-           const T& d)
+        const T& b,
+        const T& c,
+        const T& d)
         : m_A(a)
         , m_B(b)
         , m_C(c)
