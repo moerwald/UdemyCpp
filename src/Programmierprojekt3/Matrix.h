@@ -1,29 +1,17 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
 
 template <typename T>
 class Matrix
 {
 public:
-    Matrix()
-        : m_A(0)
-        , m_B(0)
-        , m_C(0)
-        , m_D(0)
-    {
-    }
 
-    Matrix(const T& a,
-        const T& b,
-        const T& c,
-        const T& d)
-        : m_A(a)
-        , m_B(b)
-        , m_C(c)
-        , m_D(d)
-    {
-    }
+    using MatrixDataType = std::vector<std::vector<T>>;
+    Matrix() = delete;
+    Matrix(std::size_t rows, std::size_t columns);
+    Matrix(std::size_t rows, std::size_t columns, T& value);
 
     Matrix operator+(const Matrix& rhs);
     Matrix& operator+=(const Matrix& rhs);
@@ -37,25 +25,32 @@ public:
     Matrix operator/(const T& rhs);
     Matrix& operator/=(const T& rhs);
 
-    void set_A(const T& a);
-    void set_B(const T& b);
-    void set_C(const T& c);
-    void set_D(const T& d);
-
-    T get_A() const;
-    T get_B() const;
-    T get_C() const;
-    T get_D() const;
 
     void print();
 
 private:
-    T m_A;
-    T m_B;
-    T m_C;
-    T m_D;
+    std::size_t m_rows;
+    std::size_t m_columns;
+    MatrixDataType m_data;
 };
 
+template<typename T>
+ Matrix<T>::Matrix(std::size_t rows, std::size_t columns)
+     : m_rows(rows)
+     , m_columns(columns)
+     , m_data(rows, std::vector<T>(columns))
+{
+
+}
+
+template<typename T>
+Matrix<T>:: Matrix(std::size_t rows, std::size_t columns, T& value)
+     : m_rows(rows)
+     , m_columns(columns)
+     , m_data(rows, std::vector<T>(columns, value))
+{
+
+}
 
 template<typename T>
 Matrix<T> Matrix<T>::operator+(const Matrix<T>& rhs)
@@ -212,8 +207,15 @@ T Matrix<T>::get_D() const
 template<typename T>
 void Matrix<T>::print()
 {
-    std::cout << m_A << ", " << m_B << std::endl;
-    std::cout << m_C << ", " << m_D << std::endl;
+    for (size_t row = 0; row < m_data.size(); row++)
+    {
+        for (size_t column = 0; column < m_data[row].size(); column++)
+        {
+            std::cout << m_data[row][column] << " ";
+        }
+
+        std::cout << std::endl;
+    }
     std::cout << std::endl;
 }
 
