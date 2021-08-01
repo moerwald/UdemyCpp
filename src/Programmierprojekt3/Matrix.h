@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <functional>
 
 template <typename T>
 class Matrix
@@ -25,6 +27,7 @@ public:
     Matrix operator/(const T& rhs);
     Matrix& operator/=(const T& rhs);
 
+    const T& get(std::size_t row, std::size_t column) const;
 
     void print();
 
@@ -35,19 +38,19 @@ private:
 };
 
 template<typename T>
- Matrix<T>::Matrix(std::size_t rows, std::size_t columns)
-     : m_rows(rows)
-     , m_columns(columns)
-     , m_data(rows, std::vector<T>(columns))
+Matrix<T>::Matrix(std::size_t rows, std::size_t columns)
+    : m_rows(rows)
+    , m_columns(columns)
+    , m_data(rows, std::vector<T>(columns))
 {
 
 }
 
 template<typename T>
-Matrix<T>:: Matrix(std::size_t rows, std::size_t columns, T& value)
-     : m_rows(rows)
-     , m_columns(columns)
-     , m_data(rows, std::vector<T>(columns, value))
+Matrix<T>::Matrix(std::size_t rows, std::size_t columns, T& value)
+    : m_rows(rows)
+    , m_columns(columns)
+    , m_data(rows, std::vector<T>(columns, value))
 {
 
 }
@@ -55,21 +58,35 @@ Matrix<T>:: Matrix(std::size_t rows, std::size_t columns, T& value)
 template<typename T>
 Matrix<T> Matrix<T>::operator+(const Matrix<T>& rhs)
 {
-    return Matrix(
-        get_A() + rhs.get_A(),
-        get_B() + rhs.get_B(),
-        get_C() + rhs.get_C(),
-        get_D() + rhs.get_D()
-    );
+    Matrix<T> result(m_rows, m_columns);
+
+    for (size_t row = 0; row < m_data.size(); row++)
+    {
+        std::transform(
+            m_data[row].begin(),
+            m_data[row].end(),
+            rhs.m_data[row].begin(),
+            result.m_data[row].begin(),
+            std::plus<T>()
+        );
+    }
+
+    return result;
 }
 
 template<typename T>
 Matrix<T>& Matrix<T>::operator+=(const Matrix<T>& rhs)
 {
-    set_A(get_A() + rhs.get_A());
-    set_B(get_B() + rhs.get_B());
-    set_C(get_C() + rhs.get_C());
-    set_D(get_D() + rhs.get_D());
+    for (size_t row = 0; row < m_data.size(); row++)
+    {
+        std::transform(
+            m_data[row].begin(),
+            m_data[row].end(),
+            rhs.m_data[row].begin(),
+            m_data[row].begin(),
+            std::plus<T>()
+        );
+    }
 
     return *this;
 }
@@ -77,42 +94,68 @@ Matrix<T>& Matrix<T>::operator+=(const Matrix<T>& rhs)
 template<typename T>
 Matrix<T> Matrix<T>::operator-(const Matrix<T>& rhs)
 {
-    return Matrix(
-        get_A() - rhs.get_A(),
-        get_B() - rhs.get_B(),
-        get_C() - rhs.get_C(),
-        get_D() - rhs.get_D()
-    );
+    Matrix<T> result(m_rows, m_columns);
+
+    for (size_t row = 0; row < m_data.size(); row++)
+    {
+        std::transform(
+            m_data[row].begin(),
+            m_data[row].end(),
+            rhs.m_data[row].begin(),
+            result.m_data[row].begin(),
+            std::minus<T>()
+        );
+    }
+
+    return result;
 }
 
 template<typename T>
 Matrix<T>& Matrix<T>::operator-=(const Matrix<T>& rhs)
 {
-    set_A(get_A() - rhs.get_A());
-    set_B(get_B() - rhs.get_B());
-    set_C(get_C() - rhs.get_C());
-    set_D(get_D() - rhs.get_D());
+    for (size_t row = 0; row < m_data.size(); row++)
+    {
+        std::transform(
+            m_data[row].begin(),
+            m_data[row].end(),
+            rhs.m_data[row].begin(),
+            m_data[row].begin(),
+            std::minus<T>()
+        );
+    }
+
     return *this;
 }
 
 template<typename T>
-Matrix<T> Matrix<T>::operator*(const T& rhs)
+Matrix<T> Matrix<T>::operator*(const T& scalar)
 {
-    return Matrix(
-        get_A() * rhs,
-        get_B() * rhs,
-        get_C() * rhs,
-        get_D() * rhs
-    );
+    Matrix<T> result(m_rows, m_columns);
+    for (size_t row = 0; row < m_data.size(); row++)
+    {
+        std::transform(
+            m_data[row].begin(),
+            m_data[row].end(),
+            result.m_data[row].begin(),
+            [&scalar](const T& val) { return scalar * val; }
+        );
+    }
+    return result;
 }
 
+
 template<typename T>
-Matrix<T>& Matrix<T>::operator*=(const T& rhs)
+Matrix<T>& Matrix<T>::operator*=(const T& scalar)
 {
-    set_A(get_A() * rhs);
-    set_B(get_B() * rhs);
-    set_C(get_C() * rhs);
-    set_D(get_D() * rhs);
+    for (size_t row = 0; row < m_data.size(); row++)
+    {
+        std::transform(
+            m_data[row].begin(),
+            m_data[row].end(),
+            m_data[row].begin(),
+            [&scalar](const T& val) { return scalar * val; }
+        );
+    }
 
     return *this;
 }
@@ -120,12 +163,20 @@ Matrix<T>& Matrix<T>::operator*=(const T& rhs)
 template<typename T>
 Matrix<T> Matrix<T>::operator*(const Matrix<T>& rhs)
 {
-    return Matrix(
-        get_A() * rhs.get_A() + get_B() * rhs.get_C(),
-        get_A() * rhs.get_B() + get_B() * rhs.get_D(),
-        get_C() * rhs.get_A() + get_D() * rhs.get_C(),
-        get_C() * rhs.get_C() + get_D() * rhs.get_D()
-    );
+    Matrix<T> result(m_rows, m_columns);
+    for (size_t row = 0; row < m_rows; row++)
+    {
+        for (size_t rhs_column = 0; rhs_column < rhs.m_columns; rhs_column++)
+        {
+            for (size_t rhs_row = 0; rhs_row < rhs.m_rows; rhs_row++)
+            {
+                result.m_data[row][rhs_column] = result.m_data[row][rhs_column] +
+                                          m_data[row][rhs_row] * rhs.m_data[rhs_row][rhs_column];
+            }
+        }
+    }
+
+    return result;
 }
 
 template<typename T>
@@ -136,72 +187,32 @@ Matrix<T>& Matrix<T>::operator*=(const Matrix<T>& rhs)
 }
 
 template<typename T>
-Matrix<T> Matrix<T>::operator/(const T& rhs)
+Matrix<T> Matrix<T>::operator/(const T& scalar)
 {
-    return Matrix(
-        get_A() / rhs,
-        get_B() / rhs,
-        get_C() / rhs,
-        get_D() / rhs
-    );
-}
+    for (size_t row = 0; row < m_data.size(); row++)
+    {
+        std::transform(
+            m_data[row].begin(),
+            m_data[row].end(),
+            m_data[row].begin(),
+            [&scalar](const T& val) { return scalar / val; }
+        );
+    }
 
-template<typename T>
-Matrix<T>& Matrix<T>::operator/=(const T& rhs)
-{
-    set_A(get_A() / rhs);
-    set_B(get_B() / rhs);
-    set_C(get_C() / rhs);
-    set_D(get_D() / rhs);
     return *this;
 }
 
 template<typename T>
-void Matrix<T>::set_A(const T& a)
+Matrix<T>& Matrix<T>::operator/=(const T& scalar)
 {
-    m_A = a;
+    *this = *this / scalar;
+    return *this;
 }
 
 template<typename T>
-void Matrix<T>::set_B(const T& b)
+const T& Matrix<T>::get(std::size_t row, std::size_t column) const
 {
-    m_B = b;
-}
-
-template<typename T>
-void Matrix<T>::set_C(const T& c)
-{
-    m_C = c;
-}
-
-template<typename T>
-void Matrix<T>::set_D(const T& d)
-{
-    m_D = d;
-}
-
-template<typename T>
-T Matrix<T>::get_A() const
-{
-    return m_A;
-}
-
-template<typename T>
-T Matrix<T>::get_B() const
-{
-    return m_B;
-}
-
-template<typename T>
-T Matrix<T>::get_C() const
-{
-    return m_C;
-}
-
-template<typename T>
-T Matrix<T>::get_D() const
-{
-    return m_D;
+    return m_data[row][column];
 }
 
 template<typename T>

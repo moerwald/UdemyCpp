@@ -28,7 +28,7 @@ private:
 
 int MoveSemantics::main()
 {
-    Entity entity(OwnString("Andy"));
+    Entity entity("Andy");
     entity.PrintName();
     return 0;
 }

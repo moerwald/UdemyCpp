@@ -3,63 +3,96 @@
 
 TEST(MatrixTests, FieldsAreCorrectlySet) {
 
-    Matrix<int> m1(1, 2, 3, 4);
+    constexpr int rows = 3;
+    constexpr int columns = rows;
+    auto val = 2;
+    Matrix<int> m1(rows, columns, val);
 
-    EXPECT_EQ(m1.get_A(), 1);
-    EXPECT_EQ(m1.get_B(), 2);
-    EXPECT_EQ(m1.get_C(), 3);
-    EXPECT_EQ(m1.get_D(), 4);
+    for (size_t i = 0; i < rows; i++)
+    {
+        for (size_t j = 0; i < columns; j++)
+        {
+            EXPECT_EQ(m1.get(i, j), 2);
+        }
+    }
 }
 
 TEST(MatrixTests, MatrixAddition) {
 
-    Matrix<int> m1(1, 2, 3, 4);
-    Matrix<int> m2(1, 2, 3, 4);
+    constexpr int rows = 3;
+    constexpr int columns = rows;
+    auto val = 2;
+    Matrix<int> m1(rows, columns, val);
+    val = 3;
+    Matrix<int> m2(rows, columns, val);
 
-    m1 += m2;
+    auto& m3 = std::move(m1 + m2);
 
-    EXPECT_EQ(m1.get_A(), 2);
-    EXPECT_EQ(m1.get_B(), 4);
-    EXPECT_EQ(m1.get_C(), 6);
-    EXPECT_EQ(m1.get_D(), 8);
+    for (size_t i = 0; i < rows; i++)
+    {
+        for (size_t j = 0; i < columns; j++)
+        {
+            EXPECT_EQ(m1.get(i, j), 5);
+        }
+    }
 }
 
 TEST(MatrixTests, MatrixSubstraction) {
 
-    Matrix<int> m1(1, 2, 3, 4);
-    Matrix<int> m2(1, 2, 3, 4);
+    constexpr int rows = 3;
+    constexpr int columns = rows;
+    auto val = 2;
+    Matrix<int> m1(rows, columns, val);
+    val = 3;
+    Matrix<int> m2(rows, columns, val);
 
-    m1 -= m2;
+    auto& m3 = std::move(m1 + m2);
 
-    EXPECT_EQ(m1.get_A(), 0);
-    EXPECT_EQ(m1.get_B(), 0);
-    EXPECT_EQ(m1.get_C(), 0);
-    EXPECT_EQ(m1.get_D(), 0);
+    for (size_t i = 0; i < rows; i++)
+    {
+        for (size_t j = 0; i < columns; j++)
+        {
+            EXPECT_EQ(m1.get(i, j), -1);
+        }
+    }
 }
 
 TEST(MatrixTests, MatrixMultiplication) {
 
-    Matrix<int> m1(1, 2, 3, 4);
-    Matrix<int> m2(5, 6, 7, 8);
+    constexpr int rows = 3;
+    constexpr int columns = rows;
+    auto val = 2;
+    Matrix<int> m1(rows, columns, val);
 
-    auto m3 = m1 * m2;
+    val = 3;
+    Matrix<int> m2(rows, columns, val);
 
-    EXPECT_EQ(m3.get_A(), 19);
-    EXPECT_EQ(m3.get_B(), 22);
-    EXPECT_EQ(m3.get_C(), 43);
-    EXPECT_EQ(m3.get_D(), 53);
+    auto m3 = std::move(m1 * m2);
+    for (size_t i = 0; i < rows; i++)
+    {
+        for (size_t j = 0; i < columns; j++)
+        {
+            EXPECT_EQ(m3.get(i, j), 2);
+        }
+    }
 }
 
 TEST(MatrixTests, ScalarMultiplication) {
 
-    Matrix<int> m1(1, 2, 3, 4);
+    constexpr int rows = 3;
+    constexpr int columns = rows;
+    auto val = 2;
+    Matrix<int> m1(rows, columns, val);
 
-    auto m3 = m1 * 2;
+    auto& m3 = std::move(m1 * 2);
 
-    EXPECT_EQ(m3.get_A(), 2);
-    EXPECT_EQ(m3.get_B(), 4);
-    EXPECT_EQ(m3.get_C(), 6);
-    EXPECT_EQ(m3.get_D(), 8);
+    for (size_t i = 0; i < rows; i++)
+    {
+        for (size_t j = 0; i < columns; j++)
+        {
+            EXPECT_EQ(m3.get(i, j), 2);
+        }
+    }
 }
 
 
