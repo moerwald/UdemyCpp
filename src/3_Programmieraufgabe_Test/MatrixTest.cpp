@@ -10,7 +10,7 @@ TEST(MatrixTests, FieldsAreCorrectlySet) {
 
     for (size_t i = 0; i < rows; i++)
     {
-        for (size_t j = 0; i < columns; j++)
+        for (size_t j = 0; j < columns; j++)
         {
             EXPECT_EQ(m1.get(i, j), 2);
         }
@@ -26,13 +26,13 @@ TEST(MatrixTests, MatrixAddition) {
     val = 3;
     Matrix<int> m2(rows, columns, val);
 
-    auto& m3 = std::move(m1 + m2);
+    auto m3 = m1 + m2;
 
     for (size_t i = 0; i < rows; i++)
     {
-        for (size_t j = 0; i < columns; j++)
+        for (size_t j = 0; j < columns; j++)
         {
-            EXPECT_EQ(m1.get(i, j), 5);
+            EXPECT_EQ(m3.get(i, j), 5);
         }
     }
 }
@@ -46,13 +46,13 @@ TEST(MatrixTests, MatrixSubstraction) {
     val = 3;
     Matrix<int> m2(rows, columns, val);
 
-    auto& m3 = std::move(m1 + m2);
+    auto m3 = (m1 - m2);
 
     for (size_t i = 0; i < rows; i++)
     {
-        for (size_t j = 0; i < columns; j++)
+        for (size_t j = 0; j < columns; j++)
         {
-            EXPECT_EQ(m1.get(i, j), -1);
+            EXPECT_EQ(m3.get(i, j), -1);
         }
     }
 }
@@ -67,12 +67,12 @@ TEST(MatrixTests, MatrixMultiplication) {
     val = 3;
     Matrix<int> m2(rows, columns, val);
 
-    auto m3 = std::move(m1 * m2);
+    auto m3 = (m1 * m2);
     for (size_t i = 0; i < rows; i++)
     {
-        for (size_t j = 0; i < columns; j++)
+        for (size_t j = 0; j < columns; j++)
         {
-            EXPECT_EQ(m3.get(i, j), 2);
+            EXPECT_EQ(m3.get(i, j), 18);
         }
     }
 }
@@ -84,16 +84,15 @@ TEST(MatrixTests, ScalarMultiplication) {
     auto val = 2;
     Matrix<int> m1(rows, columns, val);
 
-    auto& m3 = std::move(m1 * 2);
+    auto m3 = (m1 * 2);
 
     for (size_t i = 0; i < rows; i++)
     {
-        for (size_t j = 0; i < columns; j++)
+        for (size_t j = 0; j < columns; j++)
         {
-            EXPECT_EQ(m3.get(i, j), 2);
+            EXPECT_EQ(m3.get(i, j), 4);
         }
     }
 }
-
 
 
