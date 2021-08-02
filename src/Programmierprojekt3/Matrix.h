@@ -15,6 +15,12 @@ public:
     Matrix(std::size_t rows, std::size_t columns);
     Matrix(std::size_t rows, std::size_t columns, T& value);
 
+    Matrix(const Matrix<T>& rhs);
+    Matrix& operator=(const Matrix<T>& rhs);
+    Matrix( Matrix<T>&& rhs) noexcept = default;
+    Matrix& operator=( Matrix<T>&& rhs) noexcept = default;
+    ~Matrix() noexcept = default;
+
     Matrix operator+(const Matrix& rhs);
     Matrix& operator+=(const Matrix& rhs);
     Matrix operator-(const Matrix& rhs);
@@ -43,7 +49,6 @@ Matrix<T>::Matrix(std::size_t rows, std::size_t columns)
     , m_columns(columns)
     , m_data(rows, std::vector<T>(columns))
 {
-
 }
 
 template<typename T>
@@ -52,7 +57,30 @@ Matrix<T>::Matrix(std::size_t rows, std::size_t columns, T& value)
     , m_columns(columns)
     , m_data(rows, std::vector<T>(columns, value))
 {
+}
 
+template<typename T>
+Matrix<T>::Matrix(const Matrix<T>& rhs)
+    : m_rows (rhs.m_rows)
+    , m_columns (rhs.m_columns)
+    , m_data(rhs.m_data)
+{
+}
+
+template<typename T>
+Matrix<T>& Matrix<T>::operator=(const Matrix<T>& rhs)
+{
+    if (this == &rhs)
+    {
+        return *this;
+    }
+
+    m_rows = rhs.m_rows;
+    m_columns = rhs.m_columns;
+    
+    m_data = rhs.m_data;
+
+    return *this;
 }
 
 template<typename T>
