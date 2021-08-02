@@ -16,5 +16,12 @@ int main()
     a3 = a2;
     a3.operator=(a2);
 
+    // MOVE CTOR
+    auto a8 = std::move(DynamicArray<int>(2, 4));
+
+    // MOVE assignment operator
+    DynamicArray<int> a9(1, 2);
+    a9 = std::move(a1);
+
     return 0;
 }

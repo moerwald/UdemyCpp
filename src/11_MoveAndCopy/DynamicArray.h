@@ -1,6 +1,7 @@
 #pragma once
 #include <cstddef>
 #include <iostream>
+#include <utility>
 
 template <typename T>
 class DynamicArray
@@ -8,9 +9,13 @@ class DynamicArray
 public:
     DynamicArray(const T& value, const std::size_t& length);
     DynamicArray();
-    ~DynamicArray();
+
+    // Rule of five
+    ~DynamicArray() noexcept;
     DynamicArray(const DynamicArray<T>& rhs);
-    DynamicArray<T>* operator=(const DynamicArray<T>& rhs);
+    DynamicArray<T>& operator=(const DynamicArray<T>& rhs);
+    DynamicArray(DynamicArray<T>&& rhs) noexcept;
+    DynamicArray<T>& operator=(DynamicArray<T>&& rhs) noexcept;
 
     void push_back(const T& value);
     void pop_back();
@@ -56,12 +61,43 @@ DynamicArray<T>::DynamicArray(const DynamicArray<T>& rhs)
     std::cout << "copy CTOR" << std::endl;
 }
 
+
 template <typename T>
-DynamicArray<T>* DynamicArray<T>::operator=(const DynamicArray<T>& rhs)
+DynamicArray<T>::DynamicArray(DynamicArray<T>&& rhs) noexcept :
+    m_length(std::move(rhs.m_length)),
+    m_capacity(std::move(rhs.m_capacity)),
+    m_data(std::move(rhs.m_data))
+{
+    rhs.m_length = 0;
+    rhs.m_capacity = 0;
+    rhs.m_data = nullptr;
+}
+
+template <typename T>
+DynamicArray<T>& DynamicArray<T>::operator=(DynamicArray<T>&& rhs) noexcept
+{
+    if (this != &rhs)
+    {
+        delete[] m_data;
+
+        m_length = std::move(rhs.m_length);
+        m_capacity = std::move(rhs.m_capacity);
+        m_data = std::move(rhs.m_data);
+
+        rhs.m_length = 0;
+        rhs.m_capacity = 0;
+        rhs.m_data = nullptr;
+    }
+
+    return *this;
+}
+
+template <typename T>
+DynamicArray<T>& DynamicArray<T>::operator=(const DynamicArray<T>& rhs)
 {
     if (this == &rhs)
     {
-        return this;
+        return *this;
     }
 
     if (m_length != rhs.m_length)
@@ -85,11 +121,11 @@ DynamicArray<T>* DynamicArray<T>::operator=(const DynamicArray<T>& rhs)
 
     std::cout << "assignment operator" << std::endl;
 
-    return this;
+    return *this;
 }
 
 template <typename T>
-DynamicArray<T>::~DynamicArray()
+DynamicArray<T>::~DynamicArray() noexcept
 {
     delete[] m_data;
 }
