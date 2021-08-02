@@ -29,6 +29,8 @@ private:
     std::size_t m_length;
     std::size_t m_capacity;
     T* m_data;
+
+    void print(const std::string& method_name, const DynamicArray<T>& rhs) const;
 };
 
 template <typename T>
@@ -58,7 +60,7 @@ DynamicArray<T>::DynamicArray(const DynamicArray<T>& rhs)
     , m_capacity(rhs.m_capacity)
     , m_data(rhs.m_length > 0 ? new T[rhs.m_length] : nullptr)
 {
-    std::cout << "copy CTOR" << std::endl;
+    print("COPY CTOR ", rhs);
 }
 
 
@@ -71,6 +73,8 @@ DynamicArray<T>::DynamicArray(DynamicArray<T>&& rhs) noexcept :
     rhs.m_length = 0;
     rhs.m_capacity = 0;
     rhs.m_data = nullptr;
+
+    print("MOVE CTOR ", rhs);
 }
 
 template <typename T>
@@ -88,6 +92,8 @@ DynamicArray<T>& DynamicArray<T>::operator=(DynamicArray<T>&& rhs) noexcept
         rhs.m_capacity = 0;
         rhs.m_data = nullptr;
     }
+
+    print("MOVE Assignment Operator ", rhs);
 
     return *this;
 }
@@ -119,7 +125,7 @@ DynamicArray<T>& DynamicArray<T>::operator=(const DynamicArray<T>& rhs)
         m_data[i] = rhs.m_data[i];
     }
 
-    std::cout << "assignment operator" << std::endl;
+    print("Assignment Operator ", rhs);
 
     return *this;
 }
@@ -197,4 +203,13 @@ template <typename T>
 std::size_t  DynamicArray<T>::length() const
 {
     return m_length;
+}
+
+template <typename T>
+void DynamicArray<T>::print(const std::string& method_name, const DynamicArray<T>& rhs) const
+{
+    std::cout << method_name << " ";
+    std::cout << "this->m_length " << m_length << " ";
+    std::cout << "rhs.m_length " << rhs.m_length << " ";
+    std::cout << std::endl;
 }
